@@ -1,0 +1,39 @@
+a {
+    text-decoration: none;
+}
+
+img {
+    width: 400px;
+}
+
+.main_text {
+    font-family: 'Baloo Bhai', cursive;
+    font-size: 2em;
+    color: black;
+}
+
+#main_block_container {
+    display: flex;
+    justify-content: center;
+}
+
+.main_block {
+    margin: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#wrapper {
+  height: 900px;
+  position: relative;
+}
+
+#warpper,#main_block_container {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
