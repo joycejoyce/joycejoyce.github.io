@@ -52,6 +52,7 @@
 
 .one_day_pic {
     opacity: 0.3;
+    width: 150px;
 }
 
 .one_day_date {
@@ -98,4 +99,26 @@ h1 {
 
 .article_link {
     color: black;
+}
+
+.year {
+    font-family: 'Libre Baskerville', serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.month {
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+
+.one_year {
+    text-align: center;
+}
+
+img.back_dad_line_index {
+    margin: 30px 50%;
+    width: 90px;
+    height: 90px;
 }
