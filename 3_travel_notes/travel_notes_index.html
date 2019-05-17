@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Travel Notes</title>
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Pacifico&display=swap" rel="stylesheet">
+        <style>
+            body {
+                text-align: center;
+                background-image: url("images/other/cloud.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            
+            #travel_notes_title {
+                font-family: 'Pacifico', cursive;
+                font-size: 8vw;
+            }
+            
+            #travel_list {
+                
+            }
+            
+            .travel_item {
+                font-size: 3vw;
+            }
+            
+            .travel_theme {
+                font-family: 'Noto Serif TC', serif;
+            }
+            
+            .travel_dates {
+                font-family: 'Pacifico', cursive;
+            }
+            
+            a {
+                text-decoration: none;
+                color: DarkCyan;
+            }
+            
+            a:hover {
+                color: DarkSlateGray;
+            }
+            
+            @media screen and (min-width: 1000px) {
+                #travel_notes_title {
+                    font-size: 80px;
+                }
+                .travel_item {
+                    font-size: 30px;
+                }
+            }
+            @media screen and (max-width: 700px) {
+                #travel_notes_title {
+                    font-size: 40px;
+                }
+                .travel_item {
+                    font-size: 20px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="travel_notes_title">Travel Notes</h1>
+        <div id="travel_list">
+            <div class="travel_item">
+                <a href="travel_20190605-20190610.html" target="_blank">
+                    <span class="travel_dates">2019 June</span>
+                    <span class="travel_theme">北海道阿寒湖</span>
+                </a>
+            </div>
+        </div>
+    </body>
+</html>
