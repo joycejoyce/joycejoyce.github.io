@@ -112,18 +112,18 @@ a:hover {
 
 @media screen and (max-width: 1066px) {
     .heading {
-        font-size: 36px;
+        font-size: 40px;
     }
     .day_count {
-        font-size: 24px;
+        font-size: 32px;
     }
     .spot_title {
-        font-size: 22px;
+        font-size: 28px;
     }
     .spot_name {
-        font-size: 20px;
+        font-size: 24px;
     }
     .itinerary,.spot_desc {
-        font-size: 16px;
+        font-size: 20px;
     }
 }
