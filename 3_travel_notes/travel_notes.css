@@ -1,69 +1,129 @@
-.travel_title {
-    text-align: center;
-    margin: 20px 0px;
+body {
+    font-family: 'Noto Sans TC', sans-serif;
+    /*max-width: 1200px;*/
 }
 
-.travel_title_date {
-    font-family: 'PT Serif', serif;
-    font-size: 3vw;
-}
-
-.travel_title_theme {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 6vw;
-    letter-spacing: 0.1em;
-}
-
-.pic {
+.center_pic,.spot-pic {
     max-width: 100%;
-    display: block;
-    margin: 0px auto;
+    width: 500px;
+    height: auto;
 }
 
-.day_count{
-    font-family: 'PT Serif', serif;
-    font-size: 24pt;
-    margin-top: 50px;
+.spot-pic {
+    /*margin-left: 5%;*/
+    border-radius: 50px;
+}
+
+.center_pic {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.heading,.day_count,.spot_title {
+    font-family: 'Noto Serif TC', serif;
     font-weight: bold;
 }
 
-.daily_plan {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 20px;
+.day_count,.spot_title {
+    padding: 0.2% 2%;
+}
+
+.spot_name,.itinerary,.spot_desc {
+    padding: 0.2% 5%;
+}
+
+.heading {
+    font-size: 6vw;
+    text-align: center;
+    margin-top: 7%;
+}
+
+.day_count {
+    font-size: 4vw;
+    background: #cce6ff;
+}
+
+.spot_title {
+    font-size: 3vw;
+}
+
+.spot_name {
+    font-size: 2.5vw;
+}
+
+.itinerary,.spot_desc {
+    font-size: 1.5vw;
+}
+
+.itinerary {
+    color: Magenta;
+}
+
+#navbar {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    text-align: center;
+    width: 100%;
+    background-color: LightGray;
+}
+
+nav ul {
+    margin: 0px;
+    padding: 1%;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
     color: MediumOrchid;
 }
 
-table {
-    margin-top: 50px;
-    border: 1px solid grey;
-    font-family: 'PT Serif', serif;
-    font-size: 20px;
-    width: 600px;
-    text-align: center;
-    border-collapse: collapse;
+a:hover {
+    color: Orange;
 }
 
-td,th {
-    border: 1px solid grey;
+.story {
+    color: MediumSlateBlue;
 }
 
-th {
-    color: ForestGreen;
-}
-
-@media screen and (min-width: 1000px) {
-    .travel_title_theme {
-        font-size: 60px;
+@media screen and (min-width: 1200px) {
+    .heading {
+        font-size: 72px;
     }
-    .travel_title_date {
+    .day_count {
+        font-size: 48px;
+    }
+    .spot_title {
+        font-size: 36px;
+    }
+    .spot_name {
         font-size: 30px;
     }
-}
-@media screen and (max-width: 700px) {
-    .travel_title_theme {
-        font-size: 42px;
+    .itinerary,.spot_desc {
+        font-size: 18px;
     }
-    .travel_title_date {
+}
+
+@media screen and (max-width: 1066px) {
+    .heading {
+        font-size: 36px;
+    }
+    .day_count {
+        font-size: 24px;
+    }
+    .spot_title {
+        font-size: 22px;
+    }
+    .spot_name {
         font-size: 20px;
+    }
+    .itinerary,.spot_desc {
+        font-size: 16px;
     }
 }
