@@ -34,26 +34,29 @@ body {
 }
 
 .heading {
-    font-size: 6vw;
+    /*font-size: 6vw;*/
+    font-size: 26pt;
     text-align: center;
     margin-top: 7%;
 }
 
 .day_count {
-    font-size: 4vw;
+    /*font-size: 4vw;*/
+    font-size: 18pt;
     background: #cce6ff;
 }
 
 .spot_title {
-    font-size: 3vw;
+    /*font-size: 3vw;*/
+    font-size: 18pt;
 }
 
 .spot_name {
-    font-size: 2.5vw;
+    /*font-size: 2.5vw;*/
 }
 
 .itinerary,.spot_desc {
-    font-size: 1.5vw;
+    /*font-size: 1.5vw;*/
 }
 
 .itinerary {
@@ -91,7 +94,7 @@ a:hover {
 .story {
     color: MediumSlateBlue;
 }
-
+/*
 @media screen and (min-width: 1200px) {
     .heading {
         font-size: 72px;
@@ -127,3 +130,4 @@ a:hover {
         font-size: 20px;
     }
 }
+*/
