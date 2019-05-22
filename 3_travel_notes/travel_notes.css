@@ -3,15 +3,23 @@ body {
     /*max-width: 1200px;*/
 }
 
-.center_pic,.spot-pic {
+.center_pic,.spot-pic,.route-pic {
     max-width: 100%;
-    width: 500px;
     height: auto;
 }
 
+.center_pic {
+    width: 1000px;
+}
+
 .spot-pic {
-    /*margin-left: 5%;*/
+    width: 500px;
     border-radius: 50px;
+}
+
+.route-pic {
+    width: 800px;
+    border-radius: 30px;
 }
 
 .center_pic {
@@ -62,7 +70,7 @@ body {
 }
 
 .itinerary {
-    color: Magenta;
+    color: blue;
 }
 
 #navbar {
