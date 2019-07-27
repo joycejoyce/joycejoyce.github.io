@@ -2,38 +2,26 @@
 <html>
     <head>
         <link rel="stylesheet" href="dad-daily-index.css">
-        <link rel="import" href="20190711-article.html">
-        <link rel="import" href="unclassified_pages/20190712-article.html">
-        <link rel="import" href="unclassified_pages/20190711-article.html">
-        <link rel="import" href="unclassified_pages/20190711-2-article.html">
-        <link rel="import" href="unclassified_pages/20190708-article.html">
-        <link rel="import" href="unclassified_pages/20190706-article.html">
-        <link rel="import" href="unclassified_pages/20190705-article.html">
+        <link rel="import" href="https://joycejoyce.github.io/2_dads_daily/unclassified_pages/20190712-article.html">
+        <link rel="import" href="https://joycejoyce.github.io/2_dads_daily/unclassified_pages/20190711-article.html">
+        <link rel="import" href="https://joycejoyce.github.io/2_dads_daily/unclassified_pages/20190711-2-article.html">
+        <link rel="import" href="https://joycejoyce.github.io/2_dads_daily/unclassified_pages/20190708-article.html">
+        <link rel="import" href="https://joycejoyce.github.io/2_dads_daily/unclassified_pages/20190706-article.html">
+        <link rel="import" href="https://joycejoyce.github.io/2_dads_daily/unclassified_pages/20190705-article.html">
         <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Overpass&display=swap" rel="stylesheet">
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script language="javascript">
             window.onload = insertPreview;
             
             function myHTMLLoader_common(hrefValue) {
-                var queryString = 'link[rel="import"]'+'[href="unclassified_pages/'+hrefValue+'.html"';
-                var link = document.querySelector(queryString);
-                var content = link.import;
-                var el = content.querySelector('#preview');
-                return el.innerHTML;
-            }
-            
-            function myHTMLLoader_common2(hrefValue) {
-                var queryString = 'link[rel="import"]'+'[href="'+hrefValue+'.html"';
-                var link = document.querySelector(queryString);
-                var content = link.import;
-                var el = content.querySelector('#preview');
+                var queryString = 'link[rel="import"][href="https://joycejoyce.github.io/2_dads_daily/unclassified_pages/'+hrefValue+'.html"';
+                var el = document.querySelector(queryString).import.querySelector('#preview');
                 return el.innerHTML;
             }
             
             function insertPreview() {
-                //document.getElementById("article-preview1").innerHTML = myHTMLLoader_common("20190712-article");
-                document.getElementById("article-preview1").innerHTML = "test";
-                document.getElementById("article-preview2").innerHTML = myHTMLLoader_common2("20190711-article");
+                document.getElementById("article-preview1").innerHTML = myHTMLLoader_common("20190712-article");
+                document.getElementById("article-preview2").innerHTML = myHTMLLoader_common("20190711-article");
                 document.getElementById("article-preview3").innerHTML = myHTMLLoader_common("20190711-2-article");
                 document.getElementById("article-preview4").innerHTML = myHTMLLoader_common("20190708-article");
                 document.getElementById("article-preview5").innerHTML = myHTMLLoader_common("20190706-article");
@@ -42,6 +30,7 @@
         </script>
     </head>
     <body>
+        <div id="content"></div>
         <nav>
             <ul>
                 <li><a href="">文章分類</a></li>
