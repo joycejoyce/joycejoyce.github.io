@@ -104,6 +104,32 @@ a:hover {
 .story {
     color: MediumSlateBlue;
 }
+
+#note {
+    background: pink;
+    font-size: 36pt;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: bold;
+    padding: 0.2% 2%;
+    margin: 0;
+}
+
+#note_items li {
+    font-size: 18pt;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+table, td, th {
+    border: 2px solid orange;
+    padding: 7px;
+    text-align: left;
+    color: black;
+}
+
 /*
 @media screen and (min-width: 1200px) {
     .heading {
