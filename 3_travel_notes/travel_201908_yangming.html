@@ -8,148 +8,134 @@
     </head>
     <body>
         <header>
-            <h1 class="heading">陽明山兩天一夜</h1>
+            <h1 class="heading" id="yangming">陽明山兩天一夜</h1>
             <img class="center_pic" src="images/201908_yangming/yangming_all.jpg" />
         </header>
-        <nav id="navbar">
+        <!-- <nav id="navbar">
             <ul>
                 <li><a href="#day1">第1天</a></li>
                 <li><a href="#day2">第2天</a></li>
             </ul>
-        </nav>
+        </nav> -->
         <main>
             <h3 id="note">注意事項</h3>
             <ul id="note_items">
+                <li>車子不大(但可坐得舒適)，行李要精簡</li>
                 <li>帶泡湯用毛巾</li>
                 <li>帶雨具</li>
             </ul>
+            <h3 id="car">車型</h3>
+            <p>Toyota Sienta</p>
+            <img class="spot-pic" src="images/201908_yangming/car.JPG"><br>
             
-            <section class="day_count" id="day1">第1天 8/17(六)</section>
-            <section class="itinerary">
-                <table class="it_table">
-                    <th>Time</th><th>Activity</th>
-                    <tr>
-                        <td>06:30</td><td>志偉、彥婷從新竹出發</td>
-                    </tr>
-                    <tr>
-                        <td>07:30</td><td>到達台北接爸媽、哥哥、京暘</td>
-                    </tr>
-                    <tr>
-                        <td>08:30</td><td>到達陽明山</td>
-                    </tr>
-                    <tr>
-                        <td>08:30~12:00</td><td>涓絲瀑布、擎天崗</td>
-                    </tr>
-                    <tr>
-                        <td>12:00~13:30</td><td>午餐</td>
-                    </tr>
-                    <tr>
-                        <td>13:30~17:00</td><td>冷水坑、小油坑、夢幻湖</td>
-                    </tr>
-                    <tr>
-                        <td>17:00~18:30</td><td>晚餐</td>
-                    </tr>
-                    <tr>
-                        <td>18:30~21:00</td><td>Check in + 休息</td>
-                    </tr>
-                    <tr>
-                        <td>21:00~22:40</td><td>泡湯</td>
-                    </tr>
-                </table>
-            </section>
-            <!-- <img class="route-pic" src="images/20190605-0610/day1%20(1).JPG"/><br> -->
-            <section class="spot_list">
-                <div class="spot_title">特色景點</div>
-                <div class="spot">
-                    <div class="spot_name">【 涓絲瀑布 】</div>
-                    <article class="spot_desc">
-                        <img class="spot-pic" src="images/201908_yangming/waterfall.JPG"/><br>
-                        因水量不大，形成有如絹絲般的細長瀑布，因而得名。
-                        氣候環境潮濕多霧，孕育出多樣豐富的動植物生態。
-                    </article>
+            <div class="section-separator" id="activities">行程</div>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <table class="it_table">
+                        <th>Time</th><th>Activity</th>
+                        <tr>
+                            <td>06:30</td><td>志偉、彥婷從新竹出發</td>
+                        </tr>
+                        <tr>
+                            <td>07:30</td><td>到達台北接爸媽、哥哥、京暘</td>
+                        </tr>
+                        <tr>
+                            <td>08:30</td><td>到達陽明山</td>
+                        </tr>
+                        <tr>
+                            <td>08:30~12:00</td><td>涓絲瀑布、擎天崗</td>
+                        </tr>
+                        <tr>
+                            <td>12:00~13:30</td><td>午餐</td>
+                        </tr>
+                        <tr>
+                            <td>13:30~17:00</td><td>冷水坑、小油坑、夢幻湖</td>
+                        </tr>
+                        <tr>
+                            <td>17:00~18:30</td><td>晚餐</td>
+                        </tr>
+                        <tr>
+                            <td>18:30~21:00</td><td>Check in + 休息</td>
+                        </tr>
+                        <tr>
+                            <td>21:00~22:40</td><td>泡湯</td>
+                        </tr>
+                    </table>    
                 </div>
-                <div class="spot">
-                    <div class="spot_name">【 擎天崗 】</div>
-                    <article class="spot_desc">
-                        <img class="spot-pic" src="images/201908_yangming/mountain.JPG"/><br>因為牛隻的啃食，此處便形成了遼闊的草原景觀。牛隻為早年放牧未領回自然繁衍的20多頭野化水牛。</article>
+                <div class="grid-item">
+                    <table class="it_table">
+                        <th>Time</th><th>Activity</th>
+                        <tr>
+                            <td>07:00</td><td>起床</td>
+                        </tr>
+                        <tr>
+                            <td>07:30~08:30</td><td>早餐</td>
+                        </tr>
+                        <tr>
+                            <td>9:00</td><td>Check out</td>
+                        </tr>
+                        <tr>
+                            <td>9:00~11:30</td><td>蝴蝶步道、竹子湖、于右任墓</td>
+                        </tr>
+                        <tr>
+                            <td>11:30~12:30</td><td>午餐</td>
+                        </tr>
+                    </table>
                 </div>
-                <div class="spot">
-                    <div class="spot_name">【 冷水坑 】</div>
-                    <article class="spot_desc">
-                        <img class="spot-pic" src="images/201908_yangming/coldwater.JPG"/><br>
-                        「冷水坑」名字由來：
-                        <ol>
-                            <li>因本區溫泉因溫度只有40℃，遠低於其他地區泉溫度而得名。</li>
-                            <li>此處位於七股山南面山麓有一石穴湧泉，水質純淨不含硫和鐵成份，清澈見底、水溫冷涼</li>
-                        </ol>
-                    </article>
-                </div>
-                <div class="spot">
-                    <div class="spot_name">【 小油坑 】</div>
-                    <article class="spot_desc">
-                        <img class="spot-pic" src="images/201908_yangming/oil.JPG"/><br>
-                        「後火山作用」所形成之噴氣孔、硫磺結晶、溫泉及壯觀的崩塌地形深具特色。
-                    </article>
-                </div>
-                <div class="spot">
-                    <div class="spot_name">【 夢幻湖 】</div>
-                    <article class="spot_desc">
-                        <img class="spot-pic" src="images/201908_yangming/dream.JPG"/><br>
-                        讓它聲名大噪的是來自於它的稀有水生蕨類：台灣水韭。台灣水韭為台灣的特有種，並且只生存在夢幻湖當中，是極為稀有、瀕臨絕種的保育類植物。
-                    </article>
-                </div>
-            </section>
+            </div>
             
-            <section class="day_count" id="day2">第2天 8/18(日)</section>
-            <section class="itinerary">
-                <table class="it_table">
-                    <th>Time</th><th>Activity</th>
-                    <tr>
-                        <td>07:00</td><td>起床</td>
-                    </tr>
-                    <tr>
-                        <td>07:30~08:30</td><td>早餐</td>
-                    </tr>
-                    <tr>
-                        <td>9:00</td><td>Check out</td>
-                    </tr>
-                    <tr>
-                        <td>9:00~11:30</td><td>蝴蝶步道、竹子湖、于右任墓</td>
-                    </tr>
-                    <tr>
-                        <td>11:30~12:30</td><td>午餐</td>
-                    </tr>
-                </table>
-            </section>
-            <!-- <img class="route-pic" src="images/20190605-0610/day2%20(1).JPG"/><br> -->
-            <section class="spot_list">
-                <div class="spot_title">特色景點</div>
-                <div class="spot">
-                    <div class="spot_name">【 蝴蝶步道 】</div>
-                    <article class="spot_desc">
-                        <img class="spot-pic" src="images/201908_yangming/butterfly.JPG"/><br>
-                        全長約1.8公里，走完全程約需80分鐘(往返)。地勢寬廣開闊、物種繁多，有多種蜜源、食草植物；親水生態池有多種水生植物，是蛙類的最佳棲息地，蛙鳴蝶舞成為本區最美妙的影音。
-                    </article>
+            <div class="section-separator" id="special-spot">特色景點</div>
+            
+            <div class="spots">
+                <div class="s">
+                    <img class="spot-pic" src="images/201908_yangming/coldwater.JPG"/><br>
+                    【 涓絲瀑布 】<br>
+                    因水量不大，形成有如絹絲般的細長瀑布，因而得名。<br>氣候環境潮濕多霧，孕育出多樣豐富的動植物生態。
                 </div>
-                <div class="spot">
-                    <div class="spot_name">【 竹子湖 】</div>
-                    <article class="spot_desc">
-                        <img class="spot-pic" src="images/201908_yangming/bamboo.JPG"/><br>
-                        「竹子湖」地名的由來：
-                        <ol>
-                            <li>兩百年前漢人初到此地開墾時，因見土地泥濘且遍地竹林，於是稱此為竹子湖（閩南語中的「湖」有泥濘地的意思）。</li>
-                            <li>因山間盆地一帶早期簇生著箭竹林，山頂吹下的山風搖動箭竹林的景象，彷彿是湖水盪漾，因此稱之為竹子湖。</li>
-                        </ol>
-                    </article>
+                <div class="s">
+                    <img class="spot-pic" src="images/201908_yangming/mountain.JPG"/><br>
+                    【 擎天崗 】<br>
+                    因為牛隻的啃食，此處便形成了遼闊的草原景觀。牛隻為早年放牧未領回自然繁衍的20多頭野化水牛。
                 </div>
-                <div class="spot">
-                    <div class="spot_name">【 于右任墓 】</div>
-                    <article class="spot_desc">
-                        <img class="spot-pic" src="images/201908_yangming/grave.JPG"/><br>
-                        于右任，中華民國開國元勳，清末以來的革命家，新聞工作者，也是詩人、書法家。<br>墓園內松柏古樸蒼勁，寧靜莊嚴，墳高8呎，橢圓形，西北向，前立「監察院院長于公右任之墓」碑，為蔣中正故總統所題。
-                    </article>
+                <div class="s">
+                    <img class="spot-pic" src="images/201908_yangming/coldwater.JPG"/><br>
+                    【 冷水坑 】<br>
+                    「冷水坑」名字由來：
+                    <ol>
+                        <li>因本區溫泉因溫度只有40℃，遠低於其他地區泉溫度而得名。</li>
+                        <li>此處位於七股山南面山麓有一石穴湧泉，水質純淨不含硫和鐵成份，清澈見底、水溫冷涼</li>
+                    </ol>
                 </div>
-            </section>
+                <div class="s">
+                    <img class="spot-pic" src="images/201908_yangming/oil.JPG"/><br>
+                    【 小油坑 】<br>
+                    「後火山作用」所形成之噴氣孔、硫磺結晶、溫泉及壯觀的崩塌地形深具特色。
+                </div>
+                <div class="s">
+                    <img class="spot-pic" src="images/201908_yangming/dream.JPG"/><br>
+                    【 夢幻湖 】<br>
+                    讓它聲名大噪的是來自於它的稀有水生蕨類：台灣水韭。台灣水韭為台灣的特有種，並且只生存在夢幻湖當中，是極為稀有、瀕臨絕種的保育類植物。
+                </div>
+                <div class="s">
+                    <img class="spot-pic" src="images/201908_yangming/butterfly.JPG"/><br>
+                    【 蝴蝶步道 】<br>
+                    全長約1.8公里，走完全程約需80分鐘(往返)。地勢寬廣開闊、物種繁多，有多種蜜源、食草植物；親水生態池有多種水生植物，是蛙類的最佳棲息地，蛙鳴蝶舞成為本區最美妙的影音。
+                </div>
+                <div class="s">
+                    <img class="spot-pic" src="images/201908_yangming/bamboo.JPG"/><br>
+                    【 竹子湖 】<br>
+                    「竹子湖」地名的由來：
+                    <ol>
+                        <li>兩百年前漢人初到此地開墾時，因見土地泥濘且遍地竹林，於是稱此為竹子湖（閩南語中的「湖」有泥濘地的意思）。</li>
+                        <li>因山間盆地一帶早期簇生著箭竹林，山頂吹下的山風搖動箭竹林的景象，彷彿是湖水盪漾，因此稱之為竹子湖。</li>
+                    </ol>
+                </div>
+                <div class="s">
+                    <img class="spot-pic" src="images/201908_yangming/grave.JPG"/><br>
+                    【 于右任墓 】<br>
+                    于右任，中華民國開國元勳，清末以來的革命家，新聞工作者，也是詩人、書法家。<br>墓園內松柏古樸蒼勁，寧靜莊嚴，墳高8呎，橢圓形，西北向，前立「監察院院長于公右任之墓」碑，為蔣中正故總統所題。
+                </div>
+            </div>
         </main>
     </body>
 </html>
