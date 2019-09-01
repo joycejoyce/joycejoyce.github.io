@@ -10,6 +10,7 @@ img {
     font-family: 'Baloo Bhai', cursive;
     font-size: 2em;
     color: black;
+    text-align: center;
 }
 
 #main_block_container {
@@ -36,4 +37,8 @@ img {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+#LINE {
+    color: #00cc00;
 }
