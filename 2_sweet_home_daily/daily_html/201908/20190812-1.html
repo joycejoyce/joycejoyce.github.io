@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../css/daily.css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Overpass&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                /*font-family: Arial;*/
+            }
+            /* The grid: Four equal columns that floats next to each other */
+
+            .column {
+                float: left;
+                width: 10%;
+                padding: 10px;
+            }
+            /* Style the images inside the grid */
+
+            .column img {
+                opacity: 0.8;
+                cursor: pointer;
+            }
+
+            .column img:hover {
+                opacity: 1;
+            }
+            /* Clear floats after the columns */
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+            /* The expanding image container */
+
+            .container {
+                position: relative;
+                /*display: none;*/
+                width: 75%;
+                /*left: 50%;
+                transform: translateX(-50%);*/
+            }
+            /* Expanding image text */
+
+            #imgtext {
+                position: absolute;
+                bottom: 15px;
+                left: 15px;
+                color: white;
+                font-size: 20px;
+            }
+            /* Closable button inside the expanded image */
+
+            .closebtn {
+                position: absolute;
+                top: 5px;
+                right: 5px;
+                color: white;
+                font-size: 35px;
+                text-align: center;
+                cursor: pointer;
+                background: darkgrey;
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .imgbtn {
+                display: none;
+                position: absolute;
+                top: 50%;
+                color: white;
+                font-size: 35px;
+                text-align: center;
+                cursor: pointer;
+                background: #ff6600;
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+            }
+            
+            .prevbtn {
+                left: 10px;
+            }
+            
+            .nextbtn {
+                right: 10px;
+            }
+        </style>
+        
+        <script>
+            function myFunction(imgs) {
+                var expandImg = document.getElementById("expandedImg");
+                var imgText = document.getElementById("imgtext");
+                expandImg.src = imgs.src;
+                /*imgText.innerHTML = imgs.alt;*/
+                expandImg.parentElement.style.display = "block";
+            }
+        </script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="">文章總表</a></li>
+                <li><a href="">熱門文章</a></li>
+                <li><a href="">誰來我家</a></li>
+                <li><a href="">關於創作者</a></li>
+            </ul>
+        </nav>
+        
+        <div id="main">
+            <div class="title-container">
+                <div class="title-item">
+                    <div id="title">台中的清晨與黃昏</div>
+                    <div id="date">Aug 12, 2019</div>
+                </div>
+                <div class="title-item back-container">
+                    <a class="back-href" href="../../201908.html"><button id="back">&lt;&lt;&nbsp;返回本月文章列表</button></a>
+                </div>
+            </div>
+            
+            <div id="grid-container">
+                <div class="container">
+                    <span onclick="this.parentElement.style.display='none'" class="imgbtn prevbtn">&lt;</span>
+                    <span onclick="this.parentElement.style.display='none'" class="imgbtn nextbtn">&gt;</span>
+                    <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(1).jpg" id="expandedImg" style="width:100%">
+                    <div id="imgtext"></div>
+                </div>
+
+                <div class="row">
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(1).jpg" alt="taichung_photo_1" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(2).jpg" alt="taichung_photo_2" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(3).jpg" alt="taichung_photo_3" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(4).jpg" alt="taichung_photo_4" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(5).jpg" alt="taichung_photo_5" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(6).jpg" alt="taichung_photo_6" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(7).jpg" alt="taichung_photo_7" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(8).jpg" alt="taichung_photo_8" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(9).jpg" alt="taichung_photo_9" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(10).jpg" alt="taichung_photo_10" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(11).jpg" alt="taichung_photo_11" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(12).jpg" alt="taichung_photo_12" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(13).jpg" alt="taichung_photo_13" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(14).jpg" alt="taichung_photo_14" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(15).jpg" alt="taichung_photo_15" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(16).jpg" alt="taichung_photo_16" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(17).jpg" alt="taichung_photo_17" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(18).jpg" alt="taichung_photo_18" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(19).jpg" alt="taichung_photo_19" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(20).jpg" alt="taichung_photo_20" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(21).jpg" alt="taichung_photo_21" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(22).jpg" alt="taichung_photo_22" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(23).jpg" alt="taichung_photo_23" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(24).jpg" alt="taichung_photo_24" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(25).jpg" alt="taichung_photo_25" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(26).jpg" alt="taichung_photo_26" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(27).jpg" alt="taichung_photo_27" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(28).jpg" alt="taichung_photo_28" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(29).jpg" alt="taichung_photo_29" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                    <div class="column">
+                        <img src="../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(30).jpg" alt="taichung_photo_30" style="width:100%" onclick="myFunction(this);">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

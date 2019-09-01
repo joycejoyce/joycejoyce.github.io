@@ -87,7 +87,7 @@ nav {
     grid-template-rows: auto;
     grid-column-gap: 30px;
     grid-row-gap: 30px;
-    justify-items: center;
+    justify-items: start;
     align-items: start;
     /*border: solid;*/
     width: 1470px;
@@ -95,6 +95,30 @@ nav {
 
 .grid-item {
     width: 730px;
+}
+
+.article-part {
+    height: 650px;
+    overflow-y: auto;
+}
+
+ol {
+    margin: 5px;
+}
+
+.title-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.back-container {
+    position: relative;
+}
+
+.back-href {
+    position: absolute;
+    top: 20px;
+    right: 0px;
 }
 
 #back {
@@ -105,20 +129,15 @@ nav {
     line-height: 22px;
     border: solid;
     border-radius: 20px;
-    border-color: #85a3e0;
-    color: #85a3e0;
-    margin: 50px auto;
+    border-color: #ff751a;
+    color: #ff751a;
     display: block;
     background: white;
     font-family: 'Noto Serif TC', serif;
 }
 
-#back:hover, #back a:hover {
+#back:hover {
     color: #fff;
-    background: #85a3e0;
+    background: #ff751a;
     cursor: pointer;
-}
-
-#back a {
-    color: #85a3e0;
 }
