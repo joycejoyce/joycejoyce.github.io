@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../../css/daily.css">
+        <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Overpass&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
+        <style>
+            .pic-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+                width: 360px;
+                grid-column-gap: 10px;
+                grid-row-gap: 10px;
+            }
+            
+            .pics {
+                width: inherit;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="">文章總表</a></li>
+                <li><a href="">熱門文章</a></li>
+                <li><a href="">誰來我家</a></li>
+                <li><a href="">關於創作者</a></li>
+            </ul>
+        </nav>
+        
+        <div id="main">
+            <div class="title-container">
+                <div class="title-item">
+                    <div id="title">小法</div>
+                    <div id="date">Aug 22, 2019</div>
+                </div>
+                <div class="title-item back-container">
+                    <a class="back-href" href="../../201908.html"><button id="back">&lt;&lt;&nbsp;返回本月文章列表</button></a>
+                </div>
+            </div>
+            
+            <div id="grid-container">
+                <div class="grid-item">
+                    <div class="pic-grid">
+                        <img class="pics" src="../../resource_files/20190822/17201.jpg"/>
+                        <img class="pics" src="../../resource_files/20190822/17202.jpg"/>
+                        <img class="pics" src="../../resource_files/20190822/17203.jpg"/>
+                        <img class="pics" src="../../resource_files/20190822/17204.jpg"/>
+                        <img class="pics" src="../../resource_files/20190822/17205.jpg"/>
+                    </div>
+                </div>
+                <div class="grid-item article-part">
+                    <div id="article">
+                        <img class="member_icon" src="../../resource_files/member_icon/amy.png">  <span id="timestamp">21:49</span><br>
+                        東躲西藏<br>
+                        我就不想回家啦！
+                    </div>
+                    <br><br>
+                    <div id="article">
+                        <img class="member_icon" src="../../resource_files/member_icon/jim.png">  <span id="timestamp">21:50</span><br>
+                        小法跟我小時候最愛躲的地方一樣..<br>
+                        跟姊姊玩躲貓貓的時候我都會去躲媽媽衣櫃<br>
+                        印象就是媽媽每次穿很美麗的長裙(深色的碎花裙)<br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

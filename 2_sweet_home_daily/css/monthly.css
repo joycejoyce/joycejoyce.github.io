@@ -17,7 +17,7 @@ body {
 }
 
 #timestamp {
-    font-family: 'Overpass', sans-serif;
+    font-family: 'Dancing Script', cursive;
 }
 
 #title {
@@ -80,7 +80,6 @@ hr {
     grid-row-gap: 30px;
     justify-items: center;
     align-items: center;
-    /*border: solid;*/
     width: 1470px;
 }
 
@@ -90,13 +89,13 @@ hr {
 }
 
 #h1_201908 {
-    background-image: url('../resource_files/others/dye_na_0309.gif');
+    /*background-image: url('../resource_files/others/dye_na_0309.gif');*/
 }
 
 h1 {
     text-align: center;
-    font-family: 'Lobster', cursive;
-    font-size: 42pt;
+    font-family: 'Dancing Script', cursive;
+    font-size: 54pt;
     letter-spacing: 5px;
     line-height: 100px;
 }
@@ -128,6 +127,7 @@ nav {
     /*position: fixed;
     top: 0px;
     left: 0; right: 0;*/
+    display: none;
     width: 1470px;
     margin: 0 auto;
     padding: 5px;

@@ -141,3 +141,11 @@ ol {
     background: #ff751a;
     cursor: pointer;
 }
+
+.href_text {
+    color: #00cca3;
+}
+
+.href_text:hover {
+    color: #00b300;
+}
