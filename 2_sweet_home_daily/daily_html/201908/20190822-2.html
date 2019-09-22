@@ -4,18 +4,25 @@
         <link rel="stylesheet" href="../../css/daily.css">
         <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Overpass&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="../../js/20190822-2.js"></script>
         <style>
-            .pic-grid {
+            .small_and_expanded_pic {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 7fr;
                 grid-template-rows: auto;
-                width: 360px;
                 grid-column-gap: 10px;
                 grid-row-gap: 10px;
             }
             
-            .pics {
-                width: inherit;
+            .shrink_pic {
+                max-width: 80%;
+                cursor: pointer;
+            }
+            
+            #expanded_pic {
+                max-width: 100%;
+                cursor: pointer;
             }
         </style>
     </head>
@@ -42,12 +49,15 @@
             
             <div id="grid-container">
                 <div class="grid-item">
-                    <div class="pic-grid">
-                        <img class="pics" src="../../resource_files/20190822/17201.jpg"/>
-                        <img class="pics" src="../../resource_files/20190822/17202.jpg"/>
-                        <img class="pics" src="../../resource_files/20190822/17203.jpg"/>
-                        <img class="pics" src="../../resource_files/20190822/17204.jpg"/>
-                        <img class="pics" src="../../resource_files/20190822/17205.jpg"/>
+                    <div class="small_and_expanded_pic">
+                        <div class="shrink_pics">
+                            <img class="shrink_pic" src="../../resource_files/20190822/17201.jpg"/>
+                            <img class="shrink_pic" src="../../resource_files/20190822/17202.jpg"/>
+                            <img class="shrink_pic" src="../../resource_files/20190822/17203.jpg"/>
+                            <img class="shrink_pic" src="../../resource_files/20190822/17204.jpg"/>
+                            <img class="shrink_pic" src="../../resource_files/20190822/17205.jpg"/>
+                        </div>
+                        <div class="expanded_pic_container"><img src="../../resource_files/20190822/17201.jpg" id="expanded_pic" data-value="../../resource_files/20190822/17201.jpg"></div>
                     </div>
                 </div>
                 <div class="grid-item article-part">

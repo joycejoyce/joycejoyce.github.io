@@ -5,7 +5,8 @@
         <link rel="stylesheet" href="../../css/daily.css">
         <link href="https://fonts.googleapis.com/css?family=Noto+Serif+TC|Overpass&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script src="../../js/20190812-1.js"></script>
         <style>
             * {
                 box-sizing: border-box;
@@ -13,17 +14,14 @@
 
             body {
                 margin: 0;
-                /*font-family: Arial;*/
             }
-            /* The grid: Four equal columns that floats next to each other */
-
+            
             .column {
                 float: left;
                 width: 10%;
                 padding: 10px;
             }
-            /* Style the images inside the grid */
-
+            
             .column img {
                 opacity: 0.8;
                 cursor: pointer;
@@ -32,23 +30,17 @@
             .column img:hover {
                 opacity: 1;
             }
-            /* Clear floats after the columns */
 
             .row:after {
                 content: "";
                 display: table;
                 clear: both;
             }
-            /* The expanding image container */
 
             .container {
                 position: relative;
-                /*display: none;*/
                 width: 75%;
-                /*left: 50%;
-                transform: translateX(-50%);*/
             }
-            /* Expanding image text */
 
             #imgtext {
                 position: absolute;
@@ -58,12 +50,10 @@
                 background: black;
                 font-size: 20px;
                 text-align: center;
-                /*border-radius: 50%;*/
                 width: 30px;
                 height: 30px;
                 line-height: 30px;
             }
-            /* Closable button inside the expanded image */
 
             .closebtn {
                 position: absolute;
@@ -80,7 +70,6 @@
             }
             
             .imgbtn {
-                /*display: none;*/
                 position: absolute;
                 top: 50%;
                 color: white;
@@ -88,7 +77,6 @@
                 text-align: center;
                 cursor: pointer;
                 background: #ff6600;
-                /*background: #809fff;*/
                 border-radius: 50%;
                 width: 45px;
                 height: 45px;
@@ -103,72 +91,6 @@
                 right: -50px;
             }
         </style>
-        
-        <script>
-            function myFunction(imgs) {
-                var expandImg = document.getElementById("expandedImg");
-                var imgText = document.getElementById("imgtext");
-                expandImg.src = imgs.src;
-                expandImg.alt = imgs.alt;
-                imgText.innerHTML = imgs.alt;
-                expandImg.parentElement.style.display = "block";
-            }
-            
-            class SwitchPageConstants {
-                constructor(lastNum) {
-                    this.lastNum = "30";
-                }
-            }
-            
-            $(document).ready(function(){
-                $('.nextbtn').click(function(){
-                    var switchPageConstants = new SwitchPageConstants();
-                    
-                    var currentAlt = $('#expandedImg').attr('alt');
-                    console.log(currentAlt);
-
-                    if(currentAlt == switchPageConstants.lastNum) {
-                        return;
-                    }
-
-                    var nextAlt = parseInt(currentAlt)+1;
-                    console.log(nextAlt)
-
-                    var nextSrc = "../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(" + nextAlt + ").jpg";
-                    console.log(nextSrc)
-
-                    var expandImg = document.getElementById("expandedImg");
-                    expandImg.src = nextSrc;
-                    expandImg.alt = nextAlt.toString();
-                    
-                    var imgtext = document.getElementById("imgtext");
-                    imgtext.innerHTML = nextAlt.toString();
-                });
-
-                $('.prevbtn').click(function(){
-                    var currentAlt = $('#expandedImg').attr('alt');
-                    console.log(currentAlt);
-
-                    if(currentAlt == "1") {
-                        return;
-                    }
-
-                    var prevAlt = parseInt(currentAlt)-1;
-                    console.log(prevAlt)
-
-                    var prevSrc = "../../resource_files/20190812/taichung_photos/Taichung_190814_0001%20(" + prevAlt + ").jpg";
-                    console.log(prevAlt)
-
-                    var expandImg = document.getElementById("expandedImg");
-                    expandImg.src = prevSrc;
-                    expandImg.alt = prevAlt.toString();
-                    
-                    var imgtext = document.getElementById("imgtext");
-                    imgtext.innerHTML = prevAlt.toString();
-                });
-            });
-            
-        </script>
     </head>
     <body>
         <nav>
