@@ -94,6 +94,7 @@ hr {
 
 h1 {
     text-align: center;
+    margin: 30px auto;
     font-family: 'Dancing Script', cursive;
     font-size: 54pt;
     letter-spacing: 5px;
