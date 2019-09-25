@@ -62,6 +62,11 @@ nav {
     margin-bottom: 10px;
 }
 
+.pic-width-inherit {
+    /*display: block;*/
+    max-width: 100%;
+}
+
 #title {
     font-size: 56px;
     /*background: linear-gradient(white,lightgrey);*/
@@ -93,8 +98,23 @@ nav {
     width: 1470px;
 }
 
+#grid-container-3parts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    justify-items: start;
+    align-items: start;
+    width: 1470px;
+}
+
 .grid-item {
     width: 730px;
+}
+
+.grid-item-3parts {
+    width: 470px;
 }
 
 .article-part {
