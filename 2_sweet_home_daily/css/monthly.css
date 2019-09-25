@@ -92,7 +92,7 @@ hr {
     /*background-image: url('../resource_files/others/dye_na_0309.gif');*/
 }
 
-h1 {
+#header {
     /*border: solid;*/
     width: 500px;
     text-align: center;
@@ -101,6 +101,7 @@ h1 {
     font-size: 54pt;
     letter-spacing: 5px;
     line-height: 100px;
+    font-weight: bold;
 }
 
 nav ul {
