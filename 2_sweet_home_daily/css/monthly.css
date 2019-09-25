@@ -93,6 +93,8 @@ hr {
 }
 
 h1 {
+    /*border: solid;*/
+    width: 500px;
     text-align: center;
     margin: 30px auto;
     font-family: 'Dancing Script', cursive;
