@@ -1,9 +1,5 @@
 body {
-    /*background-image: url('../resource_files/others/dye_na_0566.gif');*/
-    margin-top: 0;
     margin-bottom: 30px;
-    margin-left: 0;
-    margin-right: 0;
 }
 
 #month,#year {
@@ -94,7 +90,7 @@ hr {
 
 #header {
     /*border: solid;*/
-    width: 500px;
+    max-width: 100%;
     text-align: center;
     margin: 30px auto;
     font-family: 'Dancing Script', cursive;
