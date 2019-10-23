@@ -1,3 +1,8 @@
 *.Thumbs.db
 git_commit.bat
 git_status.txt
+bin/
+target/
+InfoDir/
+code backup/
+log/
