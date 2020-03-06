@@ -56,7 +56,7 @@ nav {
     border-radius: 50%;
 }
 
-#main_pic {
+#media-part {
     display: block;
     width: 700px;
     margin-bottom: 10px;
@@ -72,7 +72,7 @@ nav {
     /*background: linear-gradient(white,lightgrey);*/
 }
 
-#timestamp {
+.timestamp {
     font-size: 16px;
     font-family: 'Overpass', sans-serif;
 }
@@ -82,11 +82,11 @@ nav {
     padding: 8px;
 }
 
-#article {
+.message {
     font-size: 20px;
 }
 
-#grid-container {
+#chat-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
@@ -109,7 +109,7 @@ nav {
     width: 1470px;
 }
 
-.grid-item {
+.chat-item {
     width: 730px;
 }
 
@@ -117,7 +117,7 @@ nav {
     width: 470px;
 }
 
-.article-part {
+#text-part {
     height: 650px;
     overflow-y: auto;
 }
@@ -126,22 +126,22 @@ ol {
     margin: 5px;
 }
 
-.title-container {
+#header-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
-.back-container {
+#back-container {
     position: relative;
 }
 
-.back-href {
+#back-href {
     position: absolute;
     top: 20px;
     right: 0px;
 }
 
-#back {
+#back-button {
     text-align: center;
     font-size: 16px;
     width: 190px;
@@ -156,7 +156,7 @@ ol {
     font-family: 'Noto Serif TC', serif;
 }
 
-#back:hover {
+#back-button:hover {
     color: #fff;
     background: #ff751a;
     cursor: pointer;

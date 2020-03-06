@@ -6,3 +6,5 @@ target/
 InfoDir/
 code backup/
 log/
+GitStatus_MyWebsite.txt
+GitCommit_MyWebsite.bat

@@ -1,0 +1,171 @@
+body {
+    margin-top: 0;
+    margin-bottom: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    font-family: 'Noto Serif TC', serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+#main {
+    width: 1470px;
+    margin: 50px auto;
+}
+
+nav ul {
+    display: block;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline;
+    margin: 0 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: black;
+}
+
+nav a:hover {
+    color: #85a3e0;
+}
+
+nav {
+    width: 1470px;
+    margin: 0 auto;
+    padding: 5px;
+    border: solid;
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-width: thin;
+    border-color: lightgray;
+    box-shadow: 1px 1px lightgray;
+}
+
+.member_icon {
+    width: 30px;
+    height: auto;
+    border-radius: 50%;
+}
+
+#main_pic {
+    display: block;
+    width: 700px;
+    margin-bottom: 10px;
+}
+
+.pic-width-inherit {
+    /*display: block;*/
+    max-width: 100%;
+}
+
+#title {
+    font-size: 56px;
+    /*background: linear-gradient(white,lightgrey);*/
+}
+
+#timestamp {
+    font-size: 16px;
+    font-family: 'Overpass', sans-serif;
+}
+
+#date {
+    font-family: 'Livvic', sans-serif;
+    padding: 8px;
+}
+
+#article {
+    font-size: 20px;
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    justify-items: start;
+    align-items: start;
+    /*border: solid;*/
+    width: 1470px;
+}
+
+#grid-container-3parts {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    justify-items: start;
+    align-items: start;
+    width: 1470px;
+}
+
+.grid-item {
+    width: 730px;
+}
+
+.grid-item-3parts {
+    width: 470px;
+}
+
+.article-part {
+    height: 650px;
+    overflow-y: auto;
+}
+
+ol {
+    margin: 5px;
+}
+
+.title-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.back-container {
+    position: relative;
+}
+
+.back-href {
+    position: absolute;
+    top: 20px;
+    right: 0px;
+}
+
+#back {
+    text-align: center;
+    font-size: 16px;
+    width: 190px;
+    height: 40px;
+    line-height: 22px;
+    border: solid;
+    border-radius: 20px;
+    border-color: #ff751a;
+    color: #ff751a;
+    display: block;
+    background: white;
+    font-family: 'Noto Serif TC', serif;
+}
+
+#back:hover {
+    color: #fff;
+    background: #ff751a;
+    cursor: pointer;
+}
+
+.href_text {
+    color: #00cca3;
+}
+
+.href_text:hover {
+    color: #00b300;
+}

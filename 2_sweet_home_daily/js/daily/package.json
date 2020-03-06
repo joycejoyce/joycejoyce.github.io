@@ -1,0 +1,30 @@
+{
+  "name": "daily",
+  "version": "1.0.0",
+  "main": "constants.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chai": "^4.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-es2015": "^6.24.1",
+    "jquery": "^3.4.1",
+    "jsdom": "^16.2.0",
+    "mocha": "^7.1.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
+  "scripts": {
+    "test": "mocha --require babel-core/register"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
