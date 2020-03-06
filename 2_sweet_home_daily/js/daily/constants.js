@@ -4,6 +4,7 @@ const HTML_ID_TEXT_PART = "text-part";
 const HTML_ID_MEDIA_PART = "media-part";
 const HTML_ID_CHAT_CONTAINER = "chat-container";
 const HTML_ID_HEADER_CONTAINER = "header-container";
+const HTML_ID_MAIN = "main";
 
 const HTML_CLASS_TIMESTAMP = "timestamp";
 const HTML_CLASS_MEMBER_ICON = "member_icon";
@@ -50,6 +51,7 @@ export {
     HTML_ID_MEDIA_PART,
     HTML_ID_CHAT_CONTAINER,
     HTML_ID_HEADER_CONTAINER,
+    HTML_ID_MAIN,
     HTML_CLASS_TIMESTAMP,
     HTML_CLASS_MEMBER_ICON,
     HTML_CLASS_MESSAGE,

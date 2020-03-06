@@ -10,6 +10,7 @@ import {
     HTML_ID_MEDIA_PART,
     HTML_ID_CHAT_CONTAINER,
     HTML_ID_HEADER_CONTAINER,
+    HTML_ID_MAIN,
     HTML_CLASS_TIMESTAMP,
     HTML_CLASS_MEMBER_ICON,
     HTML_CLASS_MESSAGE,
@@ -152,44 +153,37 @@ describe(`generateMediaPartOfChatDOM(oneImageMedia)`, function() {
     })
 });
 
-describe(`generateChatDOM([mediaPartDOM, textPartDOM])`, function() {
+describe(`generateChatDOM(oneImageMedia, msgObjs)`, function() {
     it(`generate 'div' DOM with media + texts of member chat`, function() {
-        let mediaPartDOM = HtmlGenerator.generateMediaPartOfChatDOM(oneImageMedia);
-        let textPartDOM = HtmlGenerator.generateTextPartOfChatDOM(msgObjs);
+        let dom = HtmlGenerator.generateChatDOM(oneImageMedia, msgObjs);
         
-        let dom = HtmlGenerator.generateChatDOM([mediaPartDOM, textPartDOM]);
-        expect(dom.tagName).to.eql(HTML_TAG_NAME_DIV);
-        expect(dom.id).to.eql(HTML_ID_CHAT_CONTAINER);
-        checkMediaPartOfChatDOM(dom.childNodes[0]);
-        checkTextPartOfChatDOM(dom.childNodes[1]);
+        checkChatDOM(dom);
     })
 });
 
-describe(`generateTitleAndDatePartOfHeaderDOM([titleDOM, dateDOM])`, function() {
+describe(`generateTitleAndDatePartOfHeaderDOM(title, date)`, function() {
     it(`generate 'div' DOM of title + date`, function() {
-        let titleDOM = HtmlGenerator.generateTitleDOM(dailyLINE.title);
-        let dateDOM = HtmlGenerator.generateDateDOM(dailyLINE.date);
+        let dom = HtmlGenerator.generateTitleAndDatePartOfHeaderDOM(dailyLINE.title, dailyLINE.date);
         
-        let dom = HtmlGenerator.generateTitleAndDatePartOfHeaderDOM([titleDOM, dateDOM]);
-        
-        expect(dom.className).to.eql(HTML_CLASS_HEADER_ITEM);
-        checkTitleDOM(dom.childNodes[0], dailyLINE.title);
-        checkDateDOM(dom.childNodes[1], dailyLINE.date);
+        checkTitleAndDatePartOfHeaderDOM(dom, dailyLINE.title, dailyLINE.date);
     })
 });
 
-/*describe(`generateHeaderDOM([headerItem])`, function() {
+describe(`generateHeaderDOM([title, date])`, function() {
     it(`generate 'div' DOM of the header part`, function() {
-        let titleDOM = HtmlGenerator.generateTitleDOM(dailyLINE.title);
-        let dateDOM = HtmlGenerator.generateDateDOM(dailyLINE.date);
-        let headerItem = HtmlGenerator.generateTitleAndDatePartOfHeaderDOM([titleDOM, dateDOM]);
+        let dom = HtmlGenerator.generateHeaderDOM(dailyLINE.title, dailyLINE.date);
         
-        let dom = HtmlGenerator.generateHeaderDOM([headerItem]);
-        expect(dom.id).to.eql(HTML_ID_HEADER_CONTAINER);
-        
-        
+        checkHeaderDOM(dom);
     })
-});*/
+});
+
+describe(`generateMainDOM(dailyLINE)`, function() {
+    it(`generate 'div' DOM with headerDOM & chatDOM`, function() {
+        let dom = HtmlGenerator.generateMainDOM(dailyLINE);
+        
+        checkMainDOM(dom);
+    })
+});
 
 function checkMemberChatDOM(dom, msgObj) {
     expect(dom.tagName).to.eql(HTML_TAG_NAME_DIV);
@@ -233,12 +227,38 @@ function checkMediaPartOfChatDOM(dom) {
     expect(dom.className).to.eql(HTML_CLASS_CHAT_ITEM);
 }
 
+function checkChatDOM(dom) {
+    expect(dom.tagName).to.eql(HTML_TAG_NAME_DIV);
+    expect(dom.id).to.eql(HTML_ID_CHAT_CONTAINER);
+    checkMediaPartOfChatDOM(dom.childNodes[0]);
+    checkTextPartOfChatDOM(dom.childNodes[1]);
+}
+
 function checkTitleDOM(dom, title) {
     checkDOMProperties(dom, {[PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV, [PROPERTY_INNER_HTML]: title});
 }
 
 function checkDateDOM(dom, date) {
     checkDOMProperties(dom, {[PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV, [PROPERTY_INNER_HTML]: date});
+}
+
+function checkTitleAndDatePartOfHeaderDOM(dom, title, date) {
+    expect(dom.className).to.eql(HTML_CLASS_HEADER_ITEM);
+    checkTitleDOM(dom.childNodes[0], title);
+    checkDateDOM(dom.childNodes[1], date);
+}
+
+function checkHeaderDOM(dom) {
+    expect(dom.id).to.eql(HTML_ID_HEADER_CONTAINER);
+    expect(dom.childNodes.length).to.eql(1);
+    checkTitleAndDatePartOfHeaderDOM(dom.childNodes[0], dailyLINE.title, dailyLINE.date);
+}
+
+function checkMainDOM(dom) {
+    expect(dom.id).to.eql(HTML_ID_MAIN);
+    expect(dom.childNodes.length).to.eql(2);
+    checkHeaderDOM(dom.childNodes[0]);
+    checkChatDOM(dom.childNodes[1]);
 }
 
 function checkDOMProperties(dom, propertiesToCheck) {

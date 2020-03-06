@@ -27,6 +27,7 @@ import {
     HTML_ID_MEDIA_PART,
     HTML_ID_CHAT_CONTAINER,
     HTML_ID_HEADER_CONTAINER,
+    HTML_ID_MAIN,
     HTML_CLASS_TIMESTAMP,
     HTML_CLASS_MEMBER_ICON,
     HTML_CLASS_MESSAGE,
@@ -297,33 +298,54 @@ HtmlGenerator.generateMediaPartOfChatDOM = function(oneImageMedia) {
     
     return dom;
 };
-HtmlGenerator.generateChatDOM = function(children) {
-    //return HtmlGenerator.generateDOMWithChildren(HTML_TAG_NAME_DIV, HTML_ID_CHAT_CONTAINER, children);
-    return HtmlGenerator.new_generateDOMWithChildren(
+HtmlGenerator.generateChatDOM = function(media, msgObjs) {
+    let mediaPartDOM = HtmlGenerator.generateMediaPartOfChatDOM(media);
+    let textPartDOM = HtmlGenerator.generateTextPartOfChatDOM(msgObjs);
+    
+    return HtmlGenerator.generateDOMWithChildren(
         {
             [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
             [HTML_PROPERTY_ID]: HTML_ID_CHAT_CONTAINER
         },
-        children
+        [mediaPartDOM, textPartDOM]
     );
 };
-HtmlGenerator.generateTitleAndDatePartOfHeaderDOM = function(children) {
-    //return HtmlGenerator.generateDOMWithChildren(HTML_TAG_NAME_DIV, HTML_ID_HEADER_CONTAINER, children);
-    return HtmlGenerator.new_generateDOMWithChildren(
+HtmlGenerator.generateTitleAndDatePartOfHeaderDOM = function(title, date) {
+    let titleDOM = HtmlGenerator.generateTitleDOM(title);
+    let dateDOM = HtmlGenerator.generateDateDOM(date);
+    
+    return HtmlGenerator.generateDOMWithChildren(
         {
             [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
             [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_HEADER_ITEM
         },
-        children
+        [titleDOM, dateDOM]
     );
 };
-HtmlGenerator.generateDOMWithChildren = function(tagName, id, children) {
-    let dom = document.createElement(tagName);
-    dom.id = id;
-    children.forEach(child => dom.appendChild(child));
-    return dom;
+HtmlGenerator.generateHeaderDOM = function(title, date) {
+    let titleAndDateDOM = HtmlGenerator.generateTitleAndDatePartOfHeaderDOM(title, date);
+    
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
+            [HTML_PROPERTY_ID]: HTML_ID_HEADER_CONTAINER
+        },
+        [titleAndDateDOM]
+    );
+}
+HtmlGenerator.generateMainDOM = function(dailyLINE) {
+    let headerDOM = HtmlGenerator.generateHeaderDOM(dailyLINE.title, dailyLINE.date);
+    let chatDOM = HtmlGenerator.generateChatDOM(dailyLINE.media, dailyLINE.messageObjects);
+    
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
+            [HTML_PROPERTY_ID]: HTML_ID_MAIN
+        },
+        [headerDOM, chatDOM]
+    );
 };
-HtmlGenerator.new_generateDOMWithChildren = function(domProperties, children) {
+HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
     let dom = document.createElement(domProperties[HTML_PROPERTY_TAG_NAME]);
     
     let keys = Object.keys(domProperties);
@@ -414,7 +436,11 @@ DateAndNumParser.getNum = function(dateAndNum) {
 
 function generateDailyHTML(dateAndNum) {
     let dailyLINE = new DailyLINE(dateAndNum);
-    console.log(dailyLINE);
+    
+    let dom = HtmlGenerator.generateMainDOM(dailyLINE);
+    console.log(dom.outerHTML);
+    
+    document.body.appendChild(dom);
     
     /*$.when(
         $.getScript("../js/daily/constants.js"),

@@ -84,6 +84,13 @@ nav {
 
 .message {
     font-size: 20px;
+    white-space: pre-wrap;
+}
+
+.date-change {
+    font-family: 'Livvic', sans-serif;
+    font-style: italic;
+    color: grey;
 }
 
 #chat-container {
