@@ -1,28 +1,5 @@
-import {
-    DailyLINE,
-    HtmlGenerator,
-    MemberChatDOMGenerator
-} from '../html-generator.js';
-import {
-    HTML_ID_TITLE,
-    HTML_ID_DATE,
-    HTML_ID_TEXT_PART,
-    HTML_ID_MEDIA_PART,
-    HTML_ID_CHAT_CONTAINER,
-    HTML_ID_HEADER_CONTAINER,
-    HTML_ID_MAIN,
-    HTML_CLASS_TIMESTAMP,
-    HTML_CLASS_MEMBER_ICON,
-    HTML_CLASS_MESSAGE,
-    HTML_CLASS_DATE_CHANGE,
-    HTML_CLASS_CHAT_ITEM,
-    HTML_CLASS_HEADER_ITEM,
-    HTML_TAG_NAME_SPAN,
-    HTML_TAG_NAME_IMG,
-    HTML_TAG_NAME_DIV,
-    HTML_TAG_NAME_BR,
-    SPACES_BETWEEN_MEMBER_ICON_AND_TIMESTAMP
-} from '../constants.js';
+const import_files = require('../src/import-files.js');
+import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);
 
 const chai = require('chai');
 const expect = chai.expect;
@@ -44,6 +21,7 @@ const PROPERTY_TAG_NAME = "tagName";
 const PROPERTY_INNER_HTML = "innerHTML";
 
 beforeEach(function() {
+    //import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);
     return JSDOM.fromFile("../../html/daily.html")
         .then((dom) => {
         global.window = dom.window;

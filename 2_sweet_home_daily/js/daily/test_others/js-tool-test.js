@@ -6,7 +6,7 @@ const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
 
 beforeEach(function() {
-    return JSDOM.fromFile('test/test.html')
+    return JSDOM.fromFile('test_others/test.html')
         .then((dom) => {
         global.window = dom.window;
         global.document = window.document;
@@ -28,6 +28,13 @@ describe('updateMsg', function () {
     expect(document.getElementById('msg').innerHTML).to.equal('The new msg!');
   });
 });
+
+describe('print require', function() {
+    it('print require contents', function() {
+        console.log(require('../constants.js'));
+    })
+});
+
 /*
 describe("arrays equal", function() {
     it("ary1([1, 2, 3]) === ary2([1, 2, 3]) should be true", function() {

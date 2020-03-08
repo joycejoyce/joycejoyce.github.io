@@ -1,56 +1,3 @@
-import {REGEXP_DATE_AND_NUM_DELIMITER,
-       REGEXP_LINE_MSG_PREFIX_ALL,
-       REGEXP_LINE_MSG_PREFIX_MEMBER_CHAT,
-       REGEXP_LINE_MSG_PREFIX_DATE_CHANGE,
-       REGEXP_LINE_MEMBER_NAME,
-       REGEXP_LINE_TIMESTAMP,
-       REGEXP_LINE_DATE_CHANGE_DELIMITER}
-from './regexp.js';
-import {
-    RESOURCE_FILES_LOCATION,
-    MEMBER_ICON_LOCATION,
-    MEMBER_NAME_MAPPING,
-    MEMBER_ICON_EXTENTION,
-    DAILY_TITLE,
-    DAILY_MESSAGE,
-    DAILY_MEDIA_TYPE,
-    DAILY_MEDIA_SOURCE
-} from './line-constants.js';
-import {
-    MSG_TYPE_MEMBER_CHAT,
-    MSG_TYPE_DATE_CHANGE,
-    MONTH_NAME,
-    ERR_INVALID_MESSAGE_PREFIX,
-    HTML_ID_TITLE,
-    HTML_ID_DATE,
-    HTML_ID_TEXT_PART,
-    HTML_ID_MEDIA_PART,
-    HTML_ID_CHAT_CONTAINER,
-    HTML_ID_HEADER_CONTAINER,
-    HTML_ID_MAIN,
-    HTML_CLASS_TIMESTAMP,
-    HTML_CLASS_MEMBER_ICON,
-    HTML_CLASS_MESSAGE,
-    HTML_CLASS_DATE_CHANGE,
-    HTML_CLASS_CHAT_ITEM,
-    HTML_CLASS_HEADER_ITEM,
-    HTML_TAG_NAME_SPAN,
-    HTML_TAG_NAME_IMG,
-    HTML_TAG_NAME_DIV,
-    HTML_TAG_NAME_BR,
-    HTML_PROPERTY_TAG_NAME,
-    HTML_PROPERTY_ID,
-    HTML_PROPERTY_CLASS_NAME,
-    SPACES_BETWEEN_MEMBER_ICON_AND_TIMESTAMP
-} from './constants.js';
-import {
-    Check,
-    Assert
-} from './tool.js';
-import {
-    MessageFormatException
-} from './exception.js';
-
 function DailyLINE(dateAndNum) {
     //public:
     this.title = getTitle();
@@ -435,29 +382,17 @@ DateAndNumParser.getNum = function(dateAndNum) {
 }
 
 function generateDailyHTML(dateAndNum) {
+    const import_files = require('./import-files.js');
+    import_files.doImport(import_files.IMPORT_TYPE_ES6);
+    
     let dailyLINE = new DailyLINE(dateAndNum);
     
     let dom = HtmlGenerator.generateMainDOM(dailyLINE);
-    console.log(dom.outerHTML);
     
     document.body.appendChild(dom);
-    
-    /*$.when(
-        $.getScript("../js/daily/constants.js"),
-        $.getScript("../js/daily/exception.js"),
-        $.getScript("../js/daily/line-constants.js"),
-        $.getScript("../js/daily/regexp.js"),
-        $.getScript("../js/daily/tool.js"),
-        $.Deferred(function(deferred) {
-            $(deferred.resolve);
-        })
-    ).done(function(){
-        let dailyLINE = new DailyLINE(dateAndNum);
-        console.log(dailyLINE);
-    });*/
 }
 
-export {
+module.exports = {
     DateAndNumParser,
     Media,
     DailyLINE,

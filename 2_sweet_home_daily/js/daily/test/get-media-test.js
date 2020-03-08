@@ -1,14 +1,3 @@
-import {
-    RESOURCE_FILES_LOCATION,
-    DAILY_MEDIA_TYPE,
-    DAILY_MEDIA_SOURCE
-} from '../line-constants';
-import {
-    DateAndNumParser,
-    Media,
-    DailyLINE
-} from '../html-generator';
-
 const chai = require('chai');
 const expect = chai.expect;
 const assert = chai.assert;

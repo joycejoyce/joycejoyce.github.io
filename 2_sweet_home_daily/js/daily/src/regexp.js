@@ -1,5 +1,3 @@
-import {MEMBER_NAME_MAPPING} from './line-constants.js';
-
 function RegExpGenerator() {}
 RegExpGenerator.genMsgPrefixOfMemberChatRegExp = function() {
     let regExpStr = Object.keys(MEMBER_NAME_MAPPING).join("|" + REGEXP_LINE_TIMESTAMP.source + "\\s");

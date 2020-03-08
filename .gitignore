@@ -8,3 +8,6 @@ code backup/
 log/
 GitStatus_MyWebsite.txt
 GitCommit_MyWebsite.bat
+.cache/
+node_modules/
+test_others/

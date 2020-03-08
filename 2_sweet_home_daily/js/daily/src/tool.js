@@ -1,10 +1,3 @@
-import {
-    Exception
-} from './exception.js';
-import {
-    ERR_ASSERT_FAIL
-} from './constants.js';
-
 function Check() {}
 Check.lengthesEqual = function(array1, array2) {
     return array1.length === array2.length;
