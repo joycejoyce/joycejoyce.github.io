@@ -1,4 +1,4 @@
-const import_files = require('../src/import-files.js');
+const import_files = require('../src/tool/import-files.js');
 import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);
 
 const chai = require('chai');
