@@ -21,8 +21,7 @@ const PROPERTY_TAG_NAME = "tagName";
 const PROPERTY_INNER_HTML = "innerHTML";
 
 beforeEach(function() {
-    //import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);
-    return JSDOM.fromFile("../../html/daily.html")
+    return JSDOM.fromFile("../../html/daily-one-img.html")
         .then((dom) => {
         global.window = dom.window;
         global.document = window.document;
@@ -105,17 +104,14 @@ describe(`createBRElementsOfNum(2)`, function() {
 });
 
 describe(`generateTextPartOfChatDOM(msgObjs)`, function() {
-    it(`generate 'div' DOM with child nodes of memberChat/BR/BR/dateChange/BR/BR/memberChat`, function() {
+    it(`generate 'div' DOM with child nodes of memberChat/BR/dateChange/memberChat`, function() {
         let dom = HtmlGenerator.generateTextPartOfChatDOM(msgObjs);
         checkTextPartOfChatDOM(dom);
-        expect(dom.childNodes.length).to.eql(7);
+        expect(dom.childNodes.length).to.eql(4);
         expect(dom.childNodes[0].className).to.eql(HTML_CLASS_MESSAGE);
         expect(dom.childNodes[1].tagName).to.eql(HTML_TAG_NAME_BR);
-        expect(dom.childNodes[2].tagName).to.eql(HTML_TAG_NAME_BR);
-        expect(dom.childNodes[3].className).to.eql(HTML_CLASS_DATE_CHANGE);
-        expect(dom.childNodes[4].tagName).to.eql(HTML_TAG_NAME_BR);
-        expect(dom.childNodes[5].tagName).to.eql(HTML_TAG_NAME_BR);
-        expect(dom.childNodes[6].className).to.eql(HTML_CLASS_MESSAGE);
+        expect(dom.childNodes[2].className).to.eql(HTML_CLASS_DATE_CHANGE);
+        expect(dom.childNodes[3].className).to.eql(HTML_CLASS_MESSAGE);
     })
 });
 
@@ -160,6 +156,23 @@ describe(`generateMainDOM(dailyLINE)`, function() {
         let dom = HtmlGenerator.generateMainDOM(dailyLINE);
         
         checkMainDOM(dom);
+    })
+});
+
+describe(`MemberChatMessage.appendBRElements(dom)`, function() {
+    it(`append 1 BR element`, function() {
+        let dom = document.createElement(HTML_TAG_NAME_DIV);
+        let modifiedDOM = new MemberChatMessage().appendBRElements(dom);
+        expect(modifiedDOM.childNodes.length).to.eql(1);
+        expect(modifiedDOM.childNodes[0].tagName).to.eql(HTML_TAG_NAME_BR);
+    })
+});
+
+describe(`DateChangeMessage.appendBRElements(dom)`, function() {
+    it(`append 0 BR element`, function() {
+        let dom = document.createElement(HTML_TAG_NAME_DIV);
+        let modifiedDOM = new DateChangeMessage().appendBRElements(dom);
+        expect(modifiedDOM.childNodes.length).to.eql(0);
     })
 });
 

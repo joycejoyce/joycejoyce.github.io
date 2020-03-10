@@ -121,7 +121,12 @@ function MemberChatMessage() {
         this.memberIconSrc = getMemberIconSrc(prefix);
         this.timestamp = getTimestamp(prefix);
         this.chatContent = getChatConent(content);
+        this.type = MSG_TYPE_MEMBER_CHAT;
         return this;
+    };
+    
+    this.appendBRElements = function(dom) {
+        return HtmlGenerator.appendBRElementsOfNum(1, dom);
     };
     
     this.generateMessageDOM = function(msgObj) {
@@ -157,7 +162,12 @@ function DateChangeMessage() {
     
     this.setProperties = function(prefix, content) {
         this.dateChange = getDateChange(prefix);
+        this.type = MSG_TYPE_DATE_CHANGE;
         return this;
+    };
+    
+    this.appendBRElements = function(dom) {
+        return HtmlGenerator.appendBRElementsOfNum(0, dom);
     };
     
     this.generateMessageDOM = function(msgObj) {
@@ -225,10 +235,10 @@ HtmlGenerator.generateTextPartOfChatDOM = function(msgObjs) {
     
     let msgObjDOMs = msgObjs.map(item => item.generateMessageDOM(item));
     dom = msgObjDOMs.reduce((origDOM, item, index) => {
-            if(index > 0) {
-                origDOM = HtmlGenerator.appendBRElementsOfNum(2, origDOM);
-            }
             origDOM.appendChild(item);
+            if(isNotLastItem(index, msgObjDOMs.length)) {
+                origDOM = msgObjs[index].appendBRElements(origDOM);
+            }
             return origDOM;
         }, dom);
     return dom;
@@ -304,6 +314,10 @@ HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
     
     return dom;
 };
+
+function isNotLastItem(index, length) {
+    return index < length-1;
+}
 
 function MemberChatDOMGenerator() {}
 MemberChatDOMGenerator.generateMemberChatDOM = function(memberChatMsgObj) {
@@ -388,6 +402,7 @@ function generateDailyHTML(dateAndNum) {
     let dailyLINE = new DailyLINE(dateAndNum);
     
     let dom = HtmlGenerator.generateMainDOM(dailyLINE);
+    console.log(dom.outerHTML);
     
     document.body.appendChild(dom);
 }
@@ -398,5 +413,7 @@ module.exports = {
     DailyLINE,
     HtmlGenerator,
     MemberChatDOMGenerator,
+    MemberChatMessage,
+    DateChangeMessage,
     generateDailyHTML
 };
