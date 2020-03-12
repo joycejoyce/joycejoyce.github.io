@@ -11,3 +11,4 @@ GitCommit_MyWebsite.bat
 .cache/
 node_modules/
 test_others/
+tmp/
