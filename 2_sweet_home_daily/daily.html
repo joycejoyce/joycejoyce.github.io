@@ -57,11 +57,17 @@
             </div>
         </div>
         -->
-        <script src="scripts/dist/bundle.js"></script>
+        <script src="./scripts/dist/bundle.js"></script>
         <script>
             window.onload = function() {
                 MyModule.HtmlGenerator.generateDailyHTML("20200214-2");
             }
         </script>
+        <!--<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/babel">
+            require('scripts/src/type/html-generator.js');
+            //import {HtmlGenerator} from 'scripts/src/type/html-generator.js';
+            HtmlGenerator.generateDailyHTML("20200214-2");
+        </script>-->
     </body>
 </html>

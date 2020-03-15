@@ -1,19 +1,17 @@
-import {doImport, IMPORT_TYPE_COMMON_JS} from "../scripts/src/tool/import-files.js";
-doImport(import_files.IMPORT_TYPE_COMMON_JS);
-/*const import_files = require('../scripts/src/tool/import-files.js');
-import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);*/
+const import_files = require("../scripts/src/tool/import-files.js");
+import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);
 
-const chai = require('chai');
+const chai = require("chai");
 const expect = chai.expect;
 const assert = chai.assert;
 
 const { JSDOM } = require("jsdom");
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 const { window } = jsdom;
-const $ = global.jQuery = require('jquery')(window);
+const $ = global.jQuery = require("jquery")(window);
 
 const dateAndNum = "20200214-2";
-const dailyLINE = new DailyLINE("20200214-2");
+const dailyLINE = new DailyLINE(dateAndNum);
 const memberChatMsgObj = dailyLINE.messageObjects[0];
 const dateChangeMsgObj = dailyLINE.messageObjects[1];
 const msgObjs = dailyLINE.messageObjects;
@@ -23,7 +21,7 @@ const PROPERTY_TAG_NAME = "tagName";
 const PROPERTY_INNER_HTML = "innerHTML";
 
 beforeEach(function() {
-    return JSDOM.fromFile("../daily.html")
+    return JSDOM.fromFile("./daily.html")
         .then((dom) => {
         global.window = dom.window;
         global.document = window.document;
@@ -185,13 +183,6 @@ describe(`DateChangeMessage.appendBRElements(dom)`, function() {
         expect(modifiedDOM.childNodes.length).to.eql(0);
     })
 });
-
-describe(`isCalledByNodeJS()`, function() {
-    it(`return true`, function() {
-        const tool = require('../src/tool/tool.js');
-        expect(tool.Check.isCalledByNodeJS()).to.be.true;
-    })
-})
 
 function checkMemberChatDOM(dom, msgObj) {
     expect(dom.tagName).to.eql(HTML_TAG_NAME_DIV);

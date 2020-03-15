@@ -1,10 +1,10 @@
 var path = require('path');
 
 module.exports = {
-    entry: '../scripts/src/type/html-generator.js',
+    entry: './scripts/src/type/html-generator.js',
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, '../scripts/dist'),
+        path: path.resolve(__dirname, './scripts/dist'),
         library: 'MyModule',
         libraryTarget: 'var'
     },
