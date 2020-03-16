@@ -6,7 +6,7 @@ const expect = chai.expect;
 const assert = chai.assert;
 
 const { JSDOM } = require("jsdom");
-const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
+const jsdom = new JSDOM("<!doctype html><html><body></body></html>");
 const { window } = jsdom;
 const $ = global.jQuery = require("jquery")(window);
 

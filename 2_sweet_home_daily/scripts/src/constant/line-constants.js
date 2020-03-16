@@ -10,7 +10,7 @@ const MEMBER_NAME_MAPPING = {
 };
 
 const DAILY_TITLE = {
-    "20190822-2": "東東",
+    "20190822-2": "小法",
     "20200214-2": "小螞蟻玩水"
 };
 

@@ -1,9 +1,7 @@
 body {
-    margin-top: 0;
-    margin-bottom: 30px;
-    margin-left: 0;
-    margin-right: 0;
+    margin: auto;
     font-family: 'Noto Serif TC', serif;
+    width: 80%;
 }
 
 a {
@@ -11,7 +9,6 @@ a {
 }
 
 #main {
-    width: 1470px;
     margin: 50px auto;
 }
 
@@ -38,7 +35,6 @@ nav a:hover {
 }
 
 nav {
-    width: 1470px;
     margin: 0 auto;
     padding: 5px;
     border: solid;
@@ -83,8 +79,13 @@ nav {
 }
 
 .message {
-    font-size: 20px;
+    font-size: 18px;
     white-space: pre-wrap;
+}
+
+#text-part {
+    max-height: 1300px;
+    overflow-y: auto;
 }
 
 .date-change {
@@ -95,38 +96,16 @@ nav {
 
 #chat-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     grid-template-rows: auto;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
+    grid-column-gap: 10px;
     justify-items: start;
     align-items: start;
-    /*border: solid;*/
-    width: 1470px;
 }
 
-#grid-container-3parts {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-column-gap: 30px;
-    grid-row-gap: 30px;
-    justify-items: start;
-    align-items: start;
-    width: 1470px;
-}
-
-.chat-item {
-    width: 730px;
-}
-
-.grid-item-3parts {
-    width: 470px;
-}
-
-#text-part {
-    height: 650px;
-    overflow-y: auto;
+#media-part {
+    width: 100%;
+    height: auto;
 }
 
 ol {
@@ -175,4 +154,14 @@ ol {
 
 .href_text:hover {
     color: #00b300;
+}
+
+@media only screen and (max-width: 750px) {
+    #chat-container {
+        grid-template-columns: 1fr;
+    }
+    
+    #header-container {
+        grid-template-columns: 1fr;
+    }
 }
