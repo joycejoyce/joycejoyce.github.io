@@ -16,7 +16,6 @@
                 <li><a href="">關於創作者</a></li>
             </ul>
         </nav>
-        
         <!--
         <div id="main">
             <div id="header-container">
@@ -30,30 +29,15 @@
             </div>
             
             <div id="chat-container">
-                <div class="chat-item">
-                    <img id="media-part" src="../resource_files/2019/08/28/S__41271301.jpg"/>
-                </div>
+                <img id="media-part" class="chat-item" src="./images/2019/08/28/S__41271301.jpg"/>
                 <div id="text-part" class="chat-item">
-                    <div class="message">
-                        <img class="member_icon" src="../resource_files/member_icon/dorith.png">  <span class="timestamp">22:48</span><br>
-                        上禮拜天去買了一些孕婦裝 我覺得很好看！
-                    </div>
+                    <div class="message"><img class="member_icon" src="./images/member_icon/dorith.png">  <span class="timestamp">22:48</span><br>上禮拜天去買了一些孕婦裝 我覺得很好看！</div>
                     <br><br>
-                    <div class="message">
-                        <img class="member_icon" src="../resource_files/member_icon/victor.png">  <span class="timestamp">22:49</span><br>
-                        真的很好看，很有學生的感覺!!
-                    </div>
+                    <div class="message"><img class="member_icon" src="./images/member_icon/victor.png">  <span class="timestamp">22:49</span><br>真的很好看，很有學生的感覺!!</div>
                     <br><br>
-                    <div class="message">
-                        <img class="member_icon" src="../resource_files/member_icon/jim.png">  <span class="timestamp">22:55</span><br>
-                        好漂亮喔！<br>
-                        可是姊姊還是要注意哥哥說的、要讓人家知道你是孕婦
-                    </div>
+                    <div class="message"><img class="member_icon" src="./images/member_icon/jim.png">  <span class="timestamp">22:55</span><br>好漂亮喔！<br>可是姊姊還是要注意哥哥說的、要讓人家知道你是孕婦</div>
                     <br><br>
-                    <div class="message">
-                        <img class="member_icon" src="../resource_files/member_icon/frank.png">  <span class="timestamp">23:03</span><br>
-                        身著孕婦裝，彥婷看起來，年輕快樂、端莊俏麗、清純可愛。很讚!
-                    </div>
+                    <div class="message"><img class="member_icon" src="./images/member_icon/frank.png">  <span class="timestamp">23:03</span><br>身著孕婦裝，彥婷看起來，年輕快樂、端莊俏麗、清純可愛。很讚!</div>
                 </div>
             </div>
         </div>
@@ -61,7 +45,10 @@
         <script src="./scripts/dist/bundle.js"></script>
         <script>
             window.onload = function() {
-                MyModule.HtmlGenerator.generateDailyHTML("20200214-2");
+                const oneImage_dateAndNum = "20200214-2";
+                const multiImage_dateAndNum = "20190822-2";
+                //MyModule.HtmlGenerator.generateDailyHTML(oneImage_dateAndNum);
+                MyModule.HtmlGenerator.generateDailyHTML(multiImage_dateAndNum);
             }
         </script>
     </body>

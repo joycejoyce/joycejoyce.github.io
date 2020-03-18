@@ -21,7 +21,7 @@ function DailyLINE(dateAndNum) {
     }
     
     function getMedia() {
-        return new Media(dateAndNum);
+        return Media.create(dateAndNum);
     }
 }
 

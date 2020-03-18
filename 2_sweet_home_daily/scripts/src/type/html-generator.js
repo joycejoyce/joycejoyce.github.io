@@ -42,17 +42,37 @@ HtmlGenerator.generateTextPartOfChatDOM = function(msgObjs) {
         }, dom);
     return dom;
 };
-HtmlGenerator.generateMediaPartOfChatDOM = function(oneImageMedia) {
-    let dom = document.createElement(HTML_TAG_NAME_DIV);
+HtmlGenerator.generateMediaPartOfChatDOM = function(media) {
+   return media.generateMediaDOM();
+};
+HtmlGenerator.generateOneImageMediaDOM = function(mediaSrc) {
+    let dom = document.createElement(HTML_TAG_NAME_IMG);
+    dom.id = HTML_ID_ONE_IMG_MEDIA_PART;
     dom.className = HTML_CLASS_CHAT_ITEM;
-    
-    let child = document.createElement(HTML_TAG_NAME_IMG);
-    child.id = HTML_ID_MEDIA_PART;
-    child.src = oneImageMedia.src[0];
-    
-    dom.appendChild(child);
-    
+    dom.src = mediaSrc;
     return dom;
+};
+HtmlGenerator.generateMultiImageMediaDOM = function(mediaSrc) {
+    let multiShrinkImgDOM = HtmlGenerator.generateMultiShrinkImgDOM(mediaSrc);
+    let expandImgDOM = HtmlGenerator.generateExpandImgDOM(mediaSrc[0]);
+    
+    let dom = HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
+            [HTML_PROPERTY_ID]: HTML_ID_MULTI_IMG_MEDIA_PART,
+            [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_CHAT_ITEM
+        },
+        [multiShrinkImgDOM, expandImgDOM]
+    );
+    console.log("dom = " + dom.outerHTML);
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
+            [HTML_PROPERTY_ID]: HTML_ID_MULTI_IMG_MEDIA_PART,
+            [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_CHAT_ITEM
+        },
+        [multiShrinkImgDOM, expandImgDOM]
+    );
 };
 HtmlGenerator.generateChatDOM = function(media, msgObjs) {
     let mediaPartDOM = HtmlGenerator.generateMediaPartOfChatDOM(media);
@@ -101,6 +121,31 @@ HtmlGenerator.generateMainDOM = function(dailyLINE) {
         [headerDOM, chatDOM]
     );
 };
+HtmlGenerator.generateShrinkImgDOM = function(imgSrc) {
+    let dom = document.createElement(HTML_TAG_NAME_IMG);
+    dom.className = HTML_CLASS_SHRINK_IMG;
+    dom.src = imgSrc;
+    return dom;
+};
+HtmlGenerator.generateMultiShrinkImgDOM = function(imgSrcAry) {
+    let dom = document.createElement(HTML_TAG_NAME_DIV);
+    let children = imgSrcAry.map(item => HtmlGenerator.generateShrinkImgDOM(item));
+    
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
+            [HTML_PROPERTY_ID]: HTML_ID_SHRINK_IMGS
+        },
+        children
+    );
+};
+HtmlGenerator.generateExpandImgDOM = function(imgSrc) {
+    let dom = document.createElement(HTML_TAG_NAME_IMG);
+    dom.id = HTML_ID_EXPAND_IMG;
+    dom.src = imgSrc;
+    dom[HTML_PROPERTY_DATA_VALUE] = imgSrc;
+    return dom;
+};
 HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
     let dom = document.createElement(domProperties[HTML_PROPERTY_TAG_NAME]);
     
@@ -122,7 +167,7 @@ HtmlGenerator.generateDailyHTML = function(dateAndNum) {
     let dom = HtmlGenerator.generateMainDOM(dailyLINE);
     
     document.body.appendChild(dom);
-}
+};
 
 function isNotLastItem(index, length) {
     return index < length-1;

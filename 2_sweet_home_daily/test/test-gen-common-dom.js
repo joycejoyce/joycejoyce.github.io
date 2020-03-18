@@ -1,32 +1,14 @@
-const import_files = require("../scripts/src/tool/import-files.js");
-import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);
+Object.entries(require('./common-func-for-tests.js')).forEach(([name, imported]) => global[name] = imported);
 
-const chai = require("chai");
-const expect = chai.expect;
-const assert = chai.assert;
-
-const { JSDOM } = require("jsdom");
-const jsdom = new JSDOM("<!doctype html><html><body></body></html>");
-const { window } = jsdom;
-const $ = global.jQuery = require("jquery")(window);
+Object.entries(require('./test-gen-one-img-dom.js')).forEach(([name, imported]) => global[name] = imported);
 
 const dateAndNum = "20200214-2";
 const dailyLINE = new DailyLINE(dateAndNum);
 const memberChatMsgObj = dailyLINE.messageObjects[0];
 const dateChangeMsgObj = dailyLINE.messageObjects[1];
 const msgObjs = dailyLINE.messageObjects;
-const oneImageMedia = dailyLINE.media;
 
-const PROPERTY_TAG_NAME = "tagName";
-const PROPERTY_INNER_HTML = "innerHTML";
-
-beforeEach(function() {
-    return JSDOM.fromFile("./daily.html")
-        .then((dom) => {
-        global.window = dom.window;
-        global.document = window.document;
-    });
-});
+beforeEach(loadHTML);
 
 describe(`generateTitleDOM(${dailyLINE.title})`, function() {
     it(`generate 'div' DOM with innerHTML=${dailyLINE.title}`, function() {
@@ -56,7 +38,7 @@ describe(`generateMemberIconDOM(${memberChatMsgObj.memberIconSrc})`, function() 
         let dom = MemberChatDOMGenerator.generateMemberIconDOM(memberChatMsgObj.memberIconSrc);
         expect(dom.tagName).to.eql(HTML_TAG_NAME_IMG);
         expect(dom.className).to.eql(HTML_CLASS_MEMBER_ICON);
-        expect(dom.src).to.eql(memberChatMsgObj.memberIconSrc);
+        expect($(dom).attr(HTML_PROPERTY_SRC)).to.eql(memberChatMsgObj.memberIconSrc);
     })
 });
 
@@ -115,23 +97,11 @@ describe(`generateTextPartOfChatDOM(msgObjs)`, function() {
     })
 });
 
-describe(`generateMediaPartOfChatDOM(oneImageMedia)`, function() {
-    it(`generate 'div' DOM with media contents: one image`, function() {
-        let dom = HtmlGenerator.generateMediaPartOfChatDOM(oneImageMedia);
-        checkMediaPartOfChatDOM(dom);
-        
-        let child = dom.childNodes[0];
-        expect(child.tagName).to.eql(HTML_TAG_NAME_IMG);
-        expect(child.id).to.eql(HTML_ID_MEDIA_PART);
-        expect(child.src).to.eql(oneImageMedia.src[0]);
-    })
-});
-
 describe(`generateChatDOM(oneImageMedia, msgObjs)`, function() {
     it(`generate 'div' DOM with media + texts of member chat`, function() {
         let dom = HtmlGenerator.generateChatDOM(oneImageMedia, msgObjs);
         
-        checkChatDOM(dom);
+        checkChatDOM(dom, oneImageMedia.src);
     })
 });
 
@@ -155,15 +125,16 @@ describe(`generateMainDOM(dailyLINE)`, function() {
     it(`generate 'div' DOM with headerDOM & chatDOM`, function() {
         let dom = HtmlGenerator.generateMainDOM(dailyLINE);
         
-        checkMainDOM(dom);
+        checkMainDOM(dom, dailyLINE.media.src);
     })
 });
 
 describe(`generateDailyHTML(${dateAndNum})`, function() {
     it(`append MainDOM to document.body`, function() {
         HtmlGenerator.generateDailyHTML(dateAndNum);
+        let mediaSrc = new DailyLINE(dateAndNum).media.src;
         
-        checkMainDOM(document.getElementById(HTML_ID_MAIN));
+        checkMainDOM(document.getElementById(HTML_ID_MAIN), mediaSrc);
     })
 })
 
@@ -189,7 +160,7 @@ function checkMemberChatDOM(dom, msgObj) {
     expect(dom.className).to.eql(HTML_CLASS_MESSAGE);
     
     let memberIconNode = dom.getElementsByClassName(HTML_CLASS_MEMBER_ICON)[0];
-    expect(memberIconNode.src).to.eql(msgObj.memberIconSrc);
+    expect($(memberIconNode).attr(HTML_PROPERTY_SRC)).to.eql(msgObj.memberIconSrc);
     
     expect(memberIconNode.nextSibling.textContent).to.eql(SPACES_BETWEEN_MEMBER_ICON_AND_TIMESTAMP);
     
@@ -221,24 +192,19 @@ function checkTextPartOfChatDOM(dom) {
     expect(dom.className).to.eql(HTML_CLASS_CHAT_ITEM);
 }
 
-function checkMediaPartOfChatDOM(dom) {
-    expect(dom.tagName).to.eql(HTML_TAG_NAME_DIV);
-    expect(dom.className).to.eql(HTML_CLASS_CHAT_ITEM);
-}
-
-function checkChatDOM(dom) {
+function checkChatDOM(dom, mediaSrc) {
     expect(dom.tagName).to.eql(HTML_TAG_NAME_DIV);
     expect(dom.id).to.eql(HTML_ID_CHAT_CONTAINER);
-    checkMediaPartOfChatDOM(dom.childNodes[0]);
+    checkOneImageMediaDOM(dom.childNodes[0], mediaSrc);
     checkTextPartOfChatDOM(dom.childNodes[1]);
 }
 
 function checkTitleDOM(dom, title) {
-    checkDOMProperties(dom, {[PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV, [PROPERTY_INNER_HTML]: title});
+    checkDOMProperties(dom, {[HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV, [HTML_PROPERTY_INNER_HTML]: title});
 }
 
 function checkDateDOM(dom, date) {
-    checkDOMProperties(dom, {[PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV, [PROPERTY_INNER_HTML]: date});
+    checkDOMProperties(dom, {[HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV, [HTML_PROPERTY_INNER_HTML]: date});
 }
 
 function checkTitleAndDatePartOfHeaderDOM(dom, title, date) {
@@ -253,17 +219,9 @@ function checkHeaderDOM(dom) {
     checkTitleAndDatePartOfHeaderDOM(dom.childNodes[0], dailyLINE.title, dailyLINE.date);
 }
 
-function checkMainDOM(dom) {
+function checkMainDOM(dom, mediaSrc) {
     expect(dom.id).to.eql(HTML_ID_MAIN);
     expect(dom.childNodes.length).to.eql(2);
     checkHeaderDOM(dom.childNodes[0]);
-    checkChatDOM(dom.childNodes[1]);
-}
-
-function checkDOMProperties(dom, propertiesToCheck) {
-    let keys = Object.keys(propertiesToCheck);
-    let values = Object.values(propertiesToCheck);
-    keys.forEach((item, index) => {
-        expect(dom[item]).to.eql(values[index]);
-    });
+    checkChatDOM(dom.childNodes[1], mediaSrc);
 }
