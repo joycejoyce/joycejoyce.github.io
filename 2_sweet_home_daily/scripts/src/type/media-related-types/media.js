@@ -1,9 +1,8 @@
-function Media(dateAndNum) {
-    //public:
-    this.type = DAILY_MEDIA_TYPE[dateAndNum];
-    this.src = Media.getSrcFilePaths(dateAndNum);
-}
-Media.create = function(dateAndNum) {
+function Media(dateAndNum) {}
+Media.prototype = {
+    constructor: Media
+};
+Media.getInstance = function(dateAndNum) {
     const type = Media.getMediaType(dateAndNum);
     switch(type) {
         case MEDIA_TYPE_ONE_IMAGE:

@@ -55,16 +55,7 @@ HtmlGenerator.generateOneImageMediaDOM = function(mediaSrc) {
 HtmlGenerator.generateMultiImageMediaDOM = function(mediaSrc) {
     let multiShrinkImgDOM = HtmlGenerator.generateMultiShrinkImgDOM(mediaSrc);
     let expandImgDOM = HtmlGenerator.generateExpandImgDOM(mediaSrc[0]);
-    
-    let dom = HtmlGenerator.generateDOMWithChildren(
-        {
-            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
-            [HTML_PROPERTY_ID]: HTML_ID_MULTI_IMG_MEDIA_PART,
-            [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_CHAT_ITEM
-        },
-        [multiShrinkImgDOM, expandImgDOM]
-    );
-    console.log("dom = " + dom.outerHTML);
+
     return HtmlGenerator.generateDOMWithChildren(
         {
             [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
@@ -130,6 +121,7 @@ HtmlGenerator.generateShrinkImgDOM = function(imgSrc) {
 HtmlGenerator.generateMultiShrinkImgDOM = function(imgSrcAry) {
     let dom = document.createElement(HTML_TAG_NAME_DIV);
     let children = imgSrcAry.map(item => HtmlGenerator.generateShrinkImgDOM(item));
+    $(children[0]).addClass(HTML_CLASS_CURRENT_IMG);
     
     return HtmlGenerator.generateDOMWithChildren(
         {
@@ -158,6 +150,10 @@ HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
     
     return dom;
 };
+HtmlGenerator.addEventListeners = function() {
+    MultiImageMedia.addClickEventHandlerForShrinkImg();
+    MultiImageMedia.addClickEventHandlerForExpandImg();
+};
 HtmlGenerator.generateDailyHTML = function(dateAndNum) {
     const import_files = require('../tool/import-files.js');
     import_files.doImport(import_files.IMPORT_TYPE_ES6);
@@ -167,6 +163,8 @@ HtmlGenerator.generateDailyHTML = function(dateAndNum) {
     let dom = HtmlGenerator.generateMainDOM(dailyLINE);
     
     document.body.appendChild(dom);
+    
+    HtmlGenerator.addEventListeners();
 };
 
 function isNotLastItem(index, length) {

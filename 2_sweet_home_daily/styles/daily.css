@@ -104,6 +104,13 @@ nav {
     grid-row-gap: 10px;
 }
 
+.current-img {
+    border: solid;
+    border-width: medium;
+    border-color: #6495ed;
+    padding: 2px;
+}
+
 .shrink-img {
     max-width: 80%;
     cursor: pointer;

@@ -1,3 +1,5 @@
+const EVENT_ON_CLICK = "onClick";
+
 const CSS_NAME_DISPLAY = "display";
 const CSS_NAME_GRID_TEMPLATE_COLUMNS = "grid-template-columns";
 const CSS_NAME_COLUMN_GAP = "column-gap";
@@ -7,6 +9,8 @@ const CSS_VALUE_GRID = "grid";
 const CSS_VALUE_1FR_7FR = "1fr 7fr";
 const CSS_VALUE_0PX = "0px";
 const CSS_VALUE_10PX = "10px";
+
+const HTML_ELEMENT_BODY = "body";
 
 const HTML_ID_TITLE = "title";
 const HTML_ID_DATE = "date";
@@ -27,6 +31,7 @@ const HTML_CLASS_DATE_CHANGE = "date-change";
 const HTML_CLASS_CHAT_ITEM = "chat-item";
 const HTML_CLASS_HEADER_ITEM = "header-item";
 const HTML_CLASS_SHRINK_IMG = "shrink-img";
+const HTML_CLASS_CURRENT_IMG = "current-img";
 
 const HTML_PROPERTY_TAG_NAME = "tagName";
 const HTML_PROPERTY_ID = "id";
@@ -40,7 +45,11 @@ const HTML_TAG_NAME_IMG = "IMG";
 const HTML_TAG_NAME_DIV = "DIV";
 const HTML_TAG_NAME_BR = "BR";
 
+const JQUERY_DATA_ATTRIBUTE_VALUE = "value";
+
 const SPACES_BETWEEN_MEMBER_ICON_AND_TIMESTAMP = "  ";
+
+const IS_CLICKED = "isClicked";
 
 const MONTH_NAME =
       ["January", "February", "March",
@@ -59,6 +68,7 @@ const ERR_LENGTHES_NOT_EUQAL = "Lengthes not equal";
 const ERR_ASSERT_FAIL = "Assert fail";
 
 export {
+    EVENT_ON_CLICK,
     CSS_NAME_DISPLAY,
     CSS_NAME_GRID_TEMPLATE_COLUMNS,
     CSS_NAME_COLUMN_GAP,
@@ -73,6 +83,7 @@ export {
     ERR_INVALID_MESSAGE_PREFIX,
     ERR_INVALID_MEDIA_TYPE,
     ERR_ASSERT_FAIL,
+    HTML_ELEMENT_BODY,
     HTML_ID_TITLE,
     HTML_ID_DATE,
     HTML_ID_TEXT_PART,
@@ -91,15 +102,18 @@ export {
     HTML_CLASS_CHAT_ITEM,
     HTML_CLASS_HEADER_ITEM,
     HTML_CLASS_SHRINK_IMG,
+    HTML_CLASS_CURRENT_IMG,
     HTML_TAG_NAME_SPAN,
     HTML_TAG_NAME_IMG,
     HTML_TAG_NAME_DIV,
     HTML_TAG_NAME_BR,
+    JQUERY_DATA_ATTRIBUTE_VALUE,
     HTML_PROPERTY_TAG_NAME,
     HTML_PROPERTY_ID,
     HTML_PROPERTY_CLASS_NAME,
     HTML_PROPERTY_SRC,
     HTML_PROPERTY_INNER_HTML,
     HTML_PROPERTY_DATA_VALUE,
-    SPACES_BETWEEN_MEMBER_ICON_AND_TIMESTAMP
+    SPACES_BETWEEN_MEMBER_ICON_AND_TIMESTAMP,
+    IS_CLICKED
 };

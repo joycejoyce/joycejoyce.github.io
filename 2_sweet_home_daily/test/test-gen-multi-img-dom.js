@@ -40,6 +40,24 @@ describe(`HtmlGenerator.generateMediaPartOfChatDOM(multiImageMedia)`, function()
     })
 });
 
+describe(`MultiImageMedia.addClickEventHandlerForShrinkImg()`, function() {
+    it(`add the event handler to DOM class=${HTML_CLASS_SHRINK_IMG}`, function() {
+        let dom = HtmlGenerator.generateMediaPartOfChatDOM(multiImageMedia);
+        $(HTML_ELEMENT_BODY).append(dom);
+        MultiImageMedia.addClickEventHandlerForShrinkImg();
+        checkClickEventAddedToDOM($("."+HTML_CLASS_SHRINK_IMG));
+    })
+});
+
+describe(`MultiImageMedia.addClickEventHandlerForExpandImg()`, function() {
+    it(`add the event handler to DOM id=${HTML_ID_EXPAND_IMG}`, function() {
+        let dom = HtmlGenerator.generateMediaPartOfChatDOM(multiImageMedia);
+        $(HTML_ELEMENT_BODY).append(dom);
+        MultiImageMedia.addClickEventHandlerForExpandImg();
+        checkClickEventAddedToDOM($("#"+HTML_ID_EXPAND_IMG));
+    })
+});
+
 function checkShrinkImgDOM(dom, imgSrc) {
     checkDOMProperties(dom, 
        {
@@ -84,4 +102,10 @@ function checkCSSForMediaPart(dom) {
     expect($(dom).css(CSS_NAME_GRID_TEMPLATE_COLUMNS)).to.eql(CSS_VALUE_1FR_7FR);
     expect($(dom).css(CSS_NAME_COLUMN_GAP)).to.eql(CSS_VALUE_0PX);
     expect($(dom).css(CSS_NAME_ROW_GAP)).to.eql(CSS_VALUE_10PX);
+}
+
+function checkClickEventAddedToDOM(selector) {
+    expect(selector.data(IS_CLICKED)).to.not.eql(true);
+    selector.click();
+    expect(selector.data(IS_CLICKED)).to.eql(true);
 }
