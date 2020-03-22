@@ -16,6 +16,7 @@ describe(`HtmlGenerator.generateShrinkImgDOM(imgSrc)`, function() {
     it(`generate 1 DOM with className "${HTML_CLASS_SHRINK_IMG}"`, function() {
         let dom = HtmlGenerator.generateShrinkImgDOM(multiImageMedia.src[0]);
         checkShrinkImgDOM(dom, multiImageMedia.src[0]);
+        checkClassOfNotFirstShrinkImgDOM(dom);
     })
 });
 
@@ -58,20 +59,42 @@ describe(`MultiImageMedia.addClickEventHandlerForExpandImg()`, function() {
     })
 });
 
-function checkShrinkImgDOM(dom, imgSrc) {
+function checkMultiShrinkImgDOM(dom, imgSrcAry) {
+    checkDOMProperties(dom, {[HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV});
+    expect(dom.childNodes.length).to.eql(multiImageMedia.src.length);
+    
+    let excludeFirstImgSrcAry = imgSrcAry.filter((item, index) => index > 0);
+    let excludeFirstShrinkImgDOM = [dom.childNodes].filter((item, index) => index > 0);
+    excludeFirstShrinkImgDOM.forEach((item) => checkClassOfNotFirstShrinkImgDOM(item));
+    
+    checkClassOfFirstShrinkImgDOM(dom.childNodes[0]);
+    
+    dom.childNodes.forEach((item, index) => checkShrinkImgDOM(item, imgSrcAry[index]));
+}
+
+function checkClassOfNotFirstShrinkImgDOM(dom) {
     checkDOMProperties(dom, 
        {
-        [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_IMG,
-        [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_SHRINK_IMG,
-        [HTML_PROPERTY_SRC]: imgSrc
+        [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_SHRINK_IMG
        }
     );
 }
 
-function checkMultiShrinkImgDOM(dom, imgSrcAry) {
-    checkDOMProperties(dom, {[HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV});
-    expect(dom.childNodes.length).to.eql(multiImageMedia.src.length);
-    dom.childNodes.forEach((item, index) => checkShrinkImgDOM(item, imgSrcAry[index]));
+function checkClassOfFirstShrinkImgDOM(dom) {
+    checkDOMProperties(dom, 
+       {
+        [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_SHRINK_IMG + " " + HTML_CLASS_CURRENT_IMG
+       }
+    );
+}
+
+function checkShrinkImgDOM(dom, imgSrc) {
+    checkDOMProperties(dom, 
+       {
+        [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_IMG,
+        [HTML_PROPERTY_SRC]: imgSrc
+       }
+    );
 }
 
 function checkExpandImgDOM(dom, imgSrc) {

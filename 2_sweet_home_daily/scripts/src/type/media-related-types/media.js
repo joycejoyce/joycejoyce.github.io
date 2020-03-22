@@ -1,7 +1,4 @@
-function Media(dateAndNum) {}
-Media.prototype = {
-    constructor: Media
-};
+function Media() {}
 Media.getInstance = function(dateAndNum) {
     const type = Media.getMediaType(dateAndNum);
     switch(type) {
@@ -9,6 +6,8 @@ Media.getInstance = function(dateAndNum) {
             return new OneImageMedia(dateAndNum);
         case MEDIA_TYPE_MULTI_IMAGE:
             return new MultiImageMedia(dateAndNum);
+        case MEDIA_TYPE_ONE_VIDEO:
+            return new OneVideoMedia(dateAndNum);
         default:
             throw new MessageFormatException(ERR_INVALID_MEDIA_TYPE, type);
     }
@@ -30,6 +29,12 @@ Media.getSrcFilePaths = function(dateAndNum) {
 Media.getMediaType = function(dateAndNum) {
     return DAILY_MEDIA_TYPE[dateAndNum];
 };
+Media.getFileExtention = function(fileName) {
+    return fileName.split(".").pop();
+};
+Media.getFileName = function(filePath) {
+    return filePath.split(REGEXP_FOLDER_DELIMITER).pop();
+}
 
 export {
     Media

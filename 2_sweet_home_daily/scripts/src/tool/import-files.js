@@ -53,6 +53,7 @@ function importMediaRelatedTypes(ary) {
     Object.entries(require('../type/media-related-types/media.js')).forEach(([name, imported]) => ary[name] = imported);
     Object.entries(require('../type/media-related-types/one-image-media.js')).forEach(([name, imported]) => ary[name] = imported);
     Object.entries(require('../type/media-related-types/multi-image-media.js')).forEach(([name, imported]) => ary[name] = imported);
+    Object.entries(require('../type/media-related-types/one-video-media.js')).forEach(([name, imported]) => ary[name] = imported);
 }
 
 module.exports = {

@@ -4,6 +4,10 @@ function MultiImageMedia(dateAndNum) {
     this.generateMediaDOM = function() {
         return HtmlGenerator.generateMultiImageMediaDOM(this.src);
     };
+    this.addEventListeners = function() {
+        MultiImageMedia.addClickEventHandlerForShrinkImg();
+        MultiImageMedia.addClickEventHandlerForExpandImg();
+    };
 }
 MultiImageMedia.addClickEventHandlerForShrinkImg = function() {
     $("." + HTML_CLASS_SHRINK_IMG).click(function() {

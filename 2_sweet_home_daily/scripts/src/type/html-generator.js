@@ -138,6 +138,35 @@ HtmlGenerator.generateExpandImgDOM = function(imgSrc) {
     dom[HTML_PROPERTY_DATA_VALUE] = imgSrc;
     return dom;
 };
+HtmlGenerator.generateVideoSourceDOM = function(videoSrc) {
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_SOURCE,
+            [HTML_PROPERTY_SRC]: videoSrc,
+            [HTML_PROPERTY_TYPE]: OneVideoMedia.getVideoFormat(Media.getFileName(videoSrc))
+        },
+        []
+    );
+};
+HtmlGenerator.generateVideoDOM = function(videoSrc) {
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_VIDEO,
+            [HTML_PROPERTY_CONTROLS]: true
+        },
+        [HtmlGenerator.generateVideoSourceDOM(videoSrc)]
+    );
+};
+HtmlGenerator.generateOneVideoMediaDOM = function(videoSrc) {
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
+            [HTML_PROPERTY_ID]: HTML_ID_ONE_VIDEO_MEDIA_PART,
+            [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_CHAT_ITEM
+        },
+        [HtmlGenerator.generateVideoDOM(videoSrc)]
+    );
+};
 HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
     let dom = document.createElement(domProperties[HTML_PROPERTY_TAG_NAME]);
     
@@ -150,10 +179,6 @@ HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
     
     return dom;
 };
-HtmlGenerator.addEventListeners = function() {
-    MultiImageMedia.addClickEventHandlerForShrinkImg();
-    MultiImageMedia.addClickEventHandlerForExpandImg();
-};
 HtmlGenerator.generateDailyHTML = function(dateAndNum) {
     const import_files = require('../tool/import-files.js');
     import_files.doImport(import_files.IMPORT_TYPE_ES6);
@@ -164,7 +189,7 @@ HtmlGenerator.generateDailyHTML = function(dateAndNum) {
     
     document.body.appendChild(dom);
     
-    HtmlGenerator.addEventListeners();
+    dailyLINE.media.addEventListeners();
 };
 
 function isNotLastItem(index, length) {

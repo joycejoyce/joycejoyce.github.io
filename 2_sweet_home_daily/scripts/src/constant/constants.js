@@ -17,6 +17,7 @@ const HTML_ID_DATE = "date";
 const HTML_ID_TEXT_PART = "text-part";
 const HTML_ID_ONE_IMG_MEDIA_PART = "one-img-media-part";
 const HTML_ID_MULTI_IMG_MEDIA_PART = "multi-img-media-part";
+const HTML_ID_ONE_VIDEO_MEDIA_PART = "one-video-media-part";
 const HTML_ID_CHAT_CONTAINER = "chat-container";
 const HTML_ID_HEADER_CONTAINER = "header-container";
 const HTML_ID_MAIN = "main";
@@ -39,17 +40,20 @@ const HTML_PROPERTY_CLASS_NAME = "className";
 const HTML_PROPERTY_SRC = "src";
 const HTML_PROPERTY_INNER_HTML = "innerHTML";
 const HTML_PROPERTY_DATA_VALUE = "data-value";
+const HTML_PROPERTY_CONTROLS = "controls";
+const HTML_PROPERTY_TYPE = "type";
 
 const HTML_TAG_NAME_SPAN = "SPAN";
 const HTML_TAG_NAME_IMG = "IMG";
 const HTML_TAG_NAME_DIV = "DIV";
 const HTML_TAG_NAME_BR = "BR";
+const HTML_TAG_NAME_VIDEO = "VIDEO";
+const HTML_TAG_NAME_SOURCE = "SOURCE";
 
 const JQUERY_DATA_ATTRIBUTE_VALUE = "value";
-
 const SPACES_BETWEEN_MEMBER_ICON_AND_TIMESTAMP = "  ";
-
 const IS_CLICKED = "isClicked";
+const VIDEO_FORMAT_PREFIX = "video/";
 
 const MONTH_NAME =
       ["January", "February", "March",
@@ -89,6 +93,7 @@ export {
     HTML_ID_TEXT_PART,
     HTML_ID_ONE_IMG_MEDIA_PART,
     HTML_ID_MULTI_IMG_MEDIA_PART,
+    HTML_ID_ONE_VIDEO_MEDIA_PART,
     HTML_ID_CHAT_CONTAINER,
     HTML_ID_HEADER_CONTAINER,
     HTML_ID_MAIN,
@@ -107,6 +112,8 @@ export {
     HTML_TAG_NAME_IMG,
     HTML_TAG_NAME_DIV,
     HTML_TAG_NAME_BR,
+    HTML_TAG_NAME_VIDEO,
+    HTML_TAG_NAME_SOURCE,
     JQUERY_DATA_ATTRIBUTE_VALUE,
     HTML_PROPERTY_TAG_NAME,
     HTML_PROPERTY_ID,
@@ -114,6 +121,9 @@ export {
     HTML_PROPERTY_SRC,
     HTML_PROPERTY_INNER_HTML,
     HTML_PROPERTY_DATA_VALUE,
+    HTML_PROPERTY_CONTROLS,
+    HTML_PROPERTY_TYPE,
     SPACES_BETWEEN_MEMBER_ICON_AND_TIMESTAMP,
-    IS_CLICKED
+    IS_CLICKED,
+    VIDEO_FORMAT_PREFIX
 };
