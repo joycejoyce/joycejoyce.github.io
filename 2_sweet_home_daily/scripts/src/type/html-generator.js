@@ -1,3 +1,10 @@
+import {HTML_TAG_NAME, HTML_PROPERTY} from "../constant/html-properties.js";
+
+const BR = HTML_TAG_NAME.br;
+const TAG_NAME = HTML_PROPERTY.tagName;
+const CLASS_NAME = HTML_PROPERTY.className;
+const TEXT_CONTENT = HTML_PROPERTY.textContent;
+
 function HtmlGenerator() {}
 HtmlGenerator.generateTitleDOM = function(title) {
     let dom = document.createElement(HTML_TAG_NAME_DIV);
@@ -147,14 +154,30 @@ HtmlGenerator.generateExpandImgDOM = function(imgSrc) {
     return dom;
 };
 HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
-    let dom = document.createElement(domProperties[HTML_PROPERTY_TAG_NAME]);
+    let dom = document.createElement(domProperties[TAG_NAME]);
     
     let keys = Object.keys(domProperties);
-    keys
-        .filter(item => item != HTML_PROPERTY_TAG_NAME)
+    keys.filter(item => item != TAG_NAME)
         .forEach(item => dom[item] = domProperties[item]);
     
     children.forEach(child => dom.appendChild(child));
+    /*children.forEach(child => {
+        if(typeof child === "object") {
+            console.log("----- object -----");
+            console.log("child: [" + child.outerHTML + "]");
+            dom.appendChild(child);
+            
+        }
+        else if(typeof child === "string") {
+            console.log("----- string -----");
+            console.log("child: [" + child + "]");
+            dom.textContent += child;
+        }
+        else {
+            throw "Unexpected typeof child: [" + child + "]";
+        }
+        console.log("dom: [" + dom.outerHTML + "]");
+    });*/
     
     return dom;
 };
@@ -168,11 +191,14 @@ HtmlGenerator.generateDailyHTML = function(dateAndNum) {
     
     document.body.appendChild(dom);
 };
+HtmlGenerator.getBRDom = function() {
+    return document.createElement(BR);
+}
 
 function isNotLastItem(index, length) {
     return index < length-1;
 }
 
-module.exports = {
+export {
     HtmlGenerator
 };

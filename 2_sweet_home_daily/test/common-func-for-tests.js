@@ -1,5 +1,5 @@
-const import_files = require("../scripts/src/tool/import-files.js");
-import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);
+/*const import_files = require("../scripts/src/tool/import-files.js");
+import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);*/
 
 const chai = require("chai");
 const expect = chai.expect;
