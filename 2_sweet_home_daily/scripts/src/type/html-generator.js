@@ -62,16 +62,7 @@ HtmlGenerator.generateOneImageMediaDOM = function(mediaSrc) {
 HtmlGenerator.generateMultiImageMediaDOM = function(mediaSrc) {
     let multiShrinkImgDOM = HtmlGenerator.generateMultiShrinkImgDOM(mediaSrc);
     let expandImgDOM = HtmlGenerator.generateExpandImgDOM(mediaSrc[0]);
-    
-    let dom = HtmlGenerator.generateDOMWithChildren(
-        {
-            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
-            [HTML_PROPERTY_ID]: HTML_ID_MULTI_IMG_MEDIA_PART,
-            [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_CHAT_ITEM
-        },
-        [multiShrinkImgDOM, expandImgDOM]
-    );
-    console.log("dom = " + dom.outerHTML);
+
     return HtmlGenerator.generateDOMWithChildren(
         {
             [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
@@ -137,6 +128,7 @@ HtmlGenerator.generateShrinkImgDOM = function(imgSrc) {
 HtmlGenerator.generateMultiShrinkImgDOM = function(imgSrcAry) {
     let dom = document.createElement(HTML_TAG_NAME_DIV);
     let children = imgSrcAry.map(item => HtmlGenerator.generateShrinkImgDOM(item));
+    $(children[0]).addClass(HTML_CLASS_CURRENT_IMG);
     
     return HtmlGenerator.generateDOMWithChildren(
         {
@@ -152,6 +144,35 @@ HtmlGenerator.generateExpandImgDOM = function(imgSrc) {
     dom.src = imgSrc;
     dom[HTML_PROPERTY_DATA_VALUE] = imgSrc;
     return dom;
+};
+HtmlGenerator.generateVideoSourceDOM = function(videoSrc) {
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_SOURCE,
+            [HTML_PROPERTY_SRC]: videoSrc,
+            [HTML_PROPERTY_TYPE]: OneVideoMedia.getVideoFormat(Media.getFileName(videoSrc))
+        },
+        []
+    );
+};
+HtmlGenerator.generateVideoDOM = function(videoSrc) {
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_VIDEO,
+            [HTML_PROPERTY_CONTROLS]: true
+        },
+        [HtmlGenerator.generateVideoSourceDOM(videoSrc)]
+    );
+};
+HtmlGenerator.generateOneVideoMediaDOM = function(videoSrc) {
+    return HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
+            [HTML_PROPERTY_ID]: HTML_ID_ONE_VIDEO_MEDIA_PART,
+            [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_CHAT_ITEM
+        },
+        [HtmlGenerator.generateVideoDOM(videoSrc)]
+    );
 };
 HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
     let dom = document.createElement(domProperties[TAG_NAME]);
@@ -190,6 +211,8 @@ HtmlGenerator.generateDailyHTML = function(dateAndNum) {
     let dom = HtmlGenerator.generateMainDOM(dailyLINE);
     
     document.body.appendChild(dom);
+    
+    dailyLINE.media.addEventListeners();
 };
 HtmlGenerator.getBRDom = function() {
     return document.createElement(BR);

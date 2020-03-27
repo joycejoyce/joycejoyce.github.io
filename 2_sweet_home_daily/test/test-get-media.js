@@ -35,22 +35,21 @@ describe("Media.getSrcFilePaths(${dateAndNum})", function() {
 
 describe("media.type of ${dateAndNum}", function() {
     it("should be ${MEDIA_TYPE_ONE_IMAGE}", function() {
-        let media = new Media(dateAndNum);
+        let media = Media.getInstance(dateAndNum);
         assert.equal(media.type, MEDIA_TYPE_ONE_IMAGE);
     })
 });
 
 describe("media.src of ${dateAndNum}", function() {
     it(`should be ["${RESOURCE_FILES_LOCATION}/2020/02/14/2/S__43147276.jpg"]`, function() {
-        let media = new Media(dateAndNum);
-        expect(media.src).to.eql([`${RESOURCE_FILES_LOCATION}/2020/02/14/2/S__43147276.jpg`]);
+        let media = Media.getInstance(dateAndNum);
+        expect(media.src).to.eql(`${RESOURCE_FILES_LOCATION}/2020/02/14/2/S__43147276.jpg`);
     })
 });
 
 describe("DailyLINE.media.type of ${dateAndNum}", function() {
     it("should be ${MEDIA_TYPE_ONE_IMAGE}", function() {
-        let dailyLINE = new DailyLINE(dateAndNum);
-        let media = dailyLINE.media;
+        let media = Media.getInstance(dateAndNum);
         expect(media.type).to.eql(MEDIA_TYPE_ONE_IMAGE);
     })
 });

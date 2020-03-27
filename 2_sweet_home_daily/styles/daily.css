@@ -104,14 +104,21 @@ nav {
     grid-row-gap: 10px;
 }
 
+.current-img {
+    border: solid;
+    border-width: medium;
+    border-color: #6495ed;
+    padding: 2px;
+}
+
 .shrink-img {
-    max-width: 80%;
+    width: 80%;
     cursor: pointer;
     border-radius: 5px;
 }
 
 #expand-img {
-    max-width: 100%;
+    width: 100%;
     cursor: pointer;
 }
 
@@ -161,6 +168,10 @@ ol {
 
 .href_text:hover {
     color: #00b300;
+}
+
+video {
+    width: 100%;
 }
 
 @media only screen and (max-width: 750px) {

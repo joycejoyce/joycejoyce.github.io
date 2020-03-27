@@ -12,3 +12,4 @@ GitCommit_MyWebsite.bat
 node_modules/
 test_others/
 tmp/
+2_sweet_home_daily/scripts/dist/bundle.js
