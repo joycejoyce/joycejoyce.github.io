@@ -2,6 +2,7 @@ function MessageParser(wholeMsgStr) {
     this.messageObjects = getMessageObjects();
     
     function getMessageObjects() {
+        console.log("REGEXP_LINE_MSG_PREFIX_ALL = [" + REGEXP_LINE_MSG_PREFIX_ALL + "]");
         let msgPrefixes = getMsgPrefixes();
         let msgContents = getMsgContents();
         Assert.isTrue(Check.lengthesEqual(msgPrefixes, msgContents));

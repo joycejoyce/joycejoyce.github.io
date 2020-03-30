@@ -1,73 +1,60 @@
 import {HTML_CLASS, HTML_TAG_NAME, HTML_PROPERTY} from "../../constant/html-properties.js";
 import {HtmlGenerator} from "../html-generator.js";
+import {RegexpUtil} from "../../tool/regexp-util.js";
 
-const MESSAGE = HTML_CLASS.message;
-const CLASS_TIMESTAMP = HTML_CLASS.timestamp; //distinguish with ChatMessageProcessor's private member TIMESTAMP
-const MEMBER_ICON = HTML_CLASS.member_icon;
-const DIV = HTML_TAG_NAME.div;
-const IMG = HTML_TAG_NAME.img;
-const SPAN = HTML_TAG_NAME.span;
-const BR = HTML_TAG_NAME.br;
-const TAG_NAME = HTML_PROPERTY.tagName;
-const CLASS_NAME = HTML_PROPERTY.className;
-const INNER_HTML = HTML_PROPERTY.innerHTML;
-const SRC = HTML_PROPERTY.src;
-const TEXT_CONTENT = HTML_PROPERTY.textContent;
+const ALIAS_TO_MEMBER = { //alias: member
+    "許天亮": "frank",
+    "amy": "amy",
+    "美燕": "amy",
+    "victor": "victor",
+    "dorith1989": "dorith",
+    "jim": "jim",
+    "阿羊": "jim"
+};
+const ALIASES_REGEXP = new RegExp(Object.keys(ALIAS_TO_MEMBER).join('|'));
+const TIMESTAMP_REGEXP = new RegExp("\\d{2}:\\d{2}");
 
 function ChatMessageProcessor(prefix, content) {
-    const MEMBER_ICON_LOCATION = "./images/member_icon/";
-    const MEMBER_NAME_TO_ICON_FILE_NAME = {
-        許天亮: "frank",
-        amy: "amy",
-        美燕: "amy",
-        victor: "victor",
-        dorith1989: "dorith",
-        jim: "jim",
-        阿羊: "jim"
-    };
-    const MEMBER_ICON_EXTENTION = ".png";
-    const HTML_CLASS = {
-        member_icon: "member_icon"
-    };
-    const REGEXP_LINE_MEMBER_NAME = (function() {
-        return new RegExp(Object.keys(MEMBER_NAME_TO_ICON_FILE_NAME).join("|"));
-    })();
-    const REGEXP_LINE_TIMESTAMP = (function() {
-        return new RegExp('\\d{2}:\\d{2}');
-    })();
-    
+    //message contents (start)
     const MEMBER_ICON_SRC = getMemberIconSrc(prefix);
     const TIMESTAMP = getTimestamp(prefix);
     const CHAT_CONTENT = content;
+    //message contents (end)
+    
+    function getMemberIconSrc(prefix) {
+        const member = getMember(prefix);
+        const memberIconFileName = getMemberIconFileName(member);
+        const memberIconLocation = "./images/member_icon/";
+        return memberIconLocation + memberIconFileName;
+    }
+    
+    function getMember(prefix) {
+        const aliasOfPrefix = prefix.match(ALIASES_REGEXP)[0];
+        const memberOfPrefix = ALIAS_TO_MEMBER[aliasOfPrefix];
+        return memberOfPrefix;
+    }
+    
+    function getMemberIconFileName(member) {
+        return member + ".png";
+    }
+    
+    function getTimestamp(prefix) {
+        return prefix.match(TIMESTAMP_REGEXP)[0];
+    }
     
     this.getMessage = function() {
         return {
             memberIconSrc: MEMBER_ICON_SRC,
             timestamp: TIMESTAMP,
             chatContent: CHAT_CONTENT
-        }
+        };
     };
-        
-    function getMemberIconSrc(prefix) {
-        let memberName = getMemberName(prefix);
-        return MEMBER_ICON_LOCATION + 
-            MEMBER_NAME_TO_ICON_FILE_NAME[memberName] + 
-            MEMBER_ICON_EXTENTION;
-    }
-    
-    function getMemberName(prefix) {
-        return prefix.match(REGEXP_LINE_MEMBER_NAME)[0];
-    }
-    
-    function getTimestamp(prefix) {
-        return prefix.match(REGEXP_LINE_TIMESTAMP)[0];
-    }
     
     this.getDom = function() {
         let dom = HtmlGenerator.generateDOMWithChildren(
             {
-                [TAG_NAME]: DIV,
-                [CLASS_NAME]: MESSAGE
+                [HTML_PROPERTY.tagName]: HTML_TAG_NAME.div,
+                [HTML_PROPERTY.className]: HTML_CLASS.message
             },
             getChildDoms()
         );
@@ -77,11 +64,11 @@ function ChatMessageProcessor(prefix, content) {
     
     function getChildDoms() {
         let memberIconDom = getMemberIconDom();
-        let twoSpaceDom = getTwoSpaceDom();
+        let spaceDom = getSpaceDom();
         let timestampDom = getTimestampDom();
         let chatContentDom = getChatContentDom();
         return [memberIconDom,
-               twoSpaceDom,
+               spaceDom,
                timestampDom,
                HtmlGenerator.getBRDom(),
                chatContentDom];
@@ -90,25 +77,25 @@ function ChatMessageProcessor(prefix, content) {
     function getMemberIconDom() {
         let dom = HtmlGenerator.generateDOMWithChildren(
             {
-                [TAG_NAME]: IMG,
-                [CLASS_NAME]: MEMBER_ICON,
-                [SRC]: MEMBER_ICON_SRC
+                [HTML_PROPERTY.tagName]: HTML_TAG_NAME.img,
+                [HTML_PROPERTY.className]: HTML_CLASS.memberIcon,
+                [HTML_PROPERTY.src]: MEMBER_ICON_SRC
             },
             []
         );
         return dom;
     }
     
-    function getTwoSpaceDom() {
+    function getSpaceDom() {
         return document.createTextNode("  ");
     }
     
     function getTimestampDom() {
         let dom = HtmlGenerator.generateDOMWithChildren(
             {
-                [TAG_NAME]: SPAN,
-                [CLASS_NAME]: CLASS_TIMESTAMP,
-                [TEXT_CONTENT]: TIMESTAMP
+                [HTML_PROPERTY.tagName]: HTML_TAG_NAME.span,
+                [HTML_PROPERTY.className]: HTML_CLASS.timestamp,
+                [HTML_PROPERTY.textContent]: TIMESTAMP
             },
             []
         );
@@ -119,6 +106,13 @@ function ChatMessageProcessor(prefix, content) {
         return document.createTextNode(CHAT_CONTENT);
     }
 }
+
+ChatMessageProcessor.getMessagePrefixRegexp = function() {
+    const regexpsOfTimestampAndEachAlias = Object.keys(ALIAS_TO_MEMBER)
+            .map(item => TIMESTAMP_REGEXP.source + "\\s" + item)
+            .join('|');
+    return new RegExp(regexpsOfTimestampAndEachAlias);
+};
 
 export {
     ChatMessageProcessor

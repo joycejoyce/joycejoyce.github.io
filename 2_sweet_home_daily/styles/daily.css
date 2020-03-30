@@ -46,7 +46,7 @@ nav {
     box-shadow: 1px 1px lightgray;
 }
 
-.member_icon {
+.member-icon, .member_icon {
     width: 30px;
     height: auto;
     border-radius: 50%;

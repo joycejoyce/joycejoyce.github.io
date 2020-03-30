@@ -9,7 +9,8 @@ const HTML_PROPERTY = {
 const HTML_CLASS = {
     message: "message",
     timestamp: "timestamp",
-    member_icon: "member_icon"
+    memberIcon: "member-icon",
+    dateChange: "date-change"
 };
 
 const HTML_TAG_NAME = {
