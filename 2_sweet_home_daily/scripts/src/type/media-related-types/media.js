@@ -9,7 +9,7 @@ Media.getInstance = function(dateAndNum) {
         case MEDIA_TYPE_ONE_VIDEO:
             return new OneVideoMedia(dateAndNum);
         default:
-            throw new MessageFormatException(ERR_INVALID_MEDIA_TYPE, type);
+            throw `Invalid media type: [${type}]`;
     }
 };
 Media.getSrcFolder = function(dateAndNum) {

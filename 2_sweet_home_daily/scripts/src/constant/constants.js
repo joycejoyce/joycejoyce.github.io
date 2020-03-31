@@ -14,7 +14,6 @@ const HTML_ELEMENT_BODY = "body";
 
 const HTML_ID_TITLE = "title";
 const HTML_ID_DATE = "date";
-const HTML_ID_TEXT_PART = "text-part";
 const HTML_ID_ONE_IMG_MEDIA_PART = "one-img-media-part";
 const HTML_ID_MULTI_IMG_MEDIA_PART = "multi-img-media-part";
 const HTML_ID_ONE_VIDEO_MEDIA_PART = "one-video-media-part";
@@ -26,7 +25,6 @@ const HTML_ID_EXPAND_IMG = "expand-img";
 const HTML_ID_SHRINK_AND_EXPAND_IMGS = "shrink-and-expand-imgs";
 
 const HTML_CLASS_TIMESTAMP = "timestamp";
-const HTML_CLASS_MEMBER_ICON = "member_icon";
 const HTML_CLASS_MESSAGE = "message";
 const HTML_CLASS_DATE_CHANGE = "date-change";
 const HTML_CLASS_CHAT_ITEM = "chat-item";
@@ -90,7 +88,6 @@ export {
     HTML_ELEMENT_BODY,
     HTML_ID_TITLE,
     HTML_ID_DATE,
-    HTML_ID_TEXT_PART,
     HTML_ID_ONE_IMG_MEDIA_PART,
     HTML_ID_MULTI_IMG_MEDIA_PART,
     HTML_ID_ONE_VIDEO_MEDIA_PART,
@@ -101,7 +98,6 @@ export {
     HTML_ID_EXPAND_IMG,
     HTML_ID_SHRINK_AND_EXPAND_IMGS,
     HTML_CLASS_TIMESTAMP,
-    HTML_CLASS_MEMBER_ICON,
     HTML_CLASS_MESSAGE,
     HTML_CLASS_DATE_CHANGE,
     HTML_CLASS_CHAT_ITEM,

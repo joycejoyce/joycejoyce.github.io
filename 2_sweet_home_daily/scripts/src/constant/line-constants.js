@@ -1,16 +1,4 @@
 const RESOURCE_FILES_LOCATION = "./images";
-const MEMBER_ICON_LOCATION = RESOURCE_FILES_LOCATION + "/member_icon/";
-const MEMBER_ICON_EXTENTION = ".png";
-const MEMBER_NAME_MAPPING = {
-    "許天亮": "frank",
-    "frank": "frank",
-    "美燕": "amy",
-    "amy": "amy",
-    "victor": "victor",
-    "dorith1989": "dorith",
-    "阿羊": "jim",
-    "jim": "jim"
-};
 
 const DAILY_TITLE = {
     "20190822-1": "小肥橘",
@@ -55,9 +43,6 @@ const DAILY_MEDIA_SOURCE = {
 
 export {
     RESOURCE_FILES_LOCATION,
-    MEMBER_NAME_MAPPING,
-    MEMBER_ICON_LOCATION,
-    MEMBER_ICON_EXTENTION,
     DAILY_TITLE,
     DAILY_MESSAGE,
     DAILY_MEDIA_TYPE,

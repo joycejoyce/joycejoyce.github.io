@@ -1,4 +1,6 @@
-import {HTML_TAG_NAME, HTML_PROPERTY} from "../constant/html-properties.js";
+import {HTML_TAG_NAME, HTML_PROPERTY, HTML_CLASS, HTML_ID} from "../constant/html-properties.js";
+import {ChatMessageProcessor} from "./message-related-types/chat-message-processor.js";
+import {DateChangeMessageProcessor} from "./message-related-types/date-change-message-processor.js";
 
 const BR = HTML_TAG_NAME.br;
 const TAG_NAME = HTML_PROPERTY.tagName;
@@ -34,19 +36,24 @@ HtmlGenerator.appendBRElementsOfNum = function(num, parentDOM) {
     }
     return dom;
 };
-HtmlGenerator.generateTextPartOfChatDOM = function(msgObjs) {
-    let dom = document.createElement(HTML_TAG_NAME_DIV);
-    dom.id = HTML_ID_TEXT_PART;
-    dom.className = HTML_CLASS_CHAT_ITEM;
-    
-    let msgObjDOMs = msgObjs.map(item => item.generateMessageDOM(item));
-    dom = msgObjDOMs.reduce((origDOM, item, index) => {
-            origDOM.appendChild(item);
-            if(isNotLastItem(index, msgObjDOMs.length)) {
-                origDOM = msgObjs[index].appendBRElements(origDOM);
+HtmlGenerator.generateTextPartOfChatDOM = function(msgProcessors) {
+    let msgDoms = msgProcessors.map(item => item.getDom());
+    let dom = HtmlGenerator.generateDOMWithChildren(
+        {
+            [HTML_PROPERTY.tagName]: HTML_TAG_NAME.div,
+            [HTML_PROPERTY.id]: HTML_ID.textPart,
+            [HTML_PROPERTY.className]: HTML_CLASS.chatItem
+        },
+        []
+    );
+    dom = msgDoms.reduce((origDOM, msgDom, index) => {
+            if(index > 0) {
+                HtmlGenerator.appendBRElementsOfNum(1, origDOM);
             }
+            origDOM.appendChild(msgDom);
             return origDOM;
         }, dom);
+    
     return dom;
 };
 HtmlGenerator.generateMediaPartOfChatDOM = function(media) {
@@ -72,9 +79,9 @@ HtmlGenerator.generateMultiImageMediaDOM = function(mediaSrc) {
         [multiShrinkImgDOM, expandImgDOM]
     );
 };
-HtmlGenerator.generateChatDOM = function(media, msgObjs) {
+HtmlGenerator.generateChatDOM = function(media, msgProcessors) {
     let mediaPartDOM = HtmlGenerator.generateMediaPartOfChatDOM(media);
-    let textPartDOM = HtmlGenerator.generateTextPartOfChatDOM(msgObjs);
+    let textPartDOM = HtmlGenerator.generateTextPartOfChatDOM(msgProcessors);
     
     return HtmlGenerator.generateDOMWithChildren(
         {
@@ -109,7 +116,7 @@ HtmlGenerator.generateHeaderDOM = function(title, date) {
 }
 HtmlGenerator.generateMainDOM = function(dailyLINE) {
     let headerDOM = HtmlGenerator.generateHeaderDOM(dailyLINE.title, dailyLINE.date);
-    let chatDOM = HtmlGenerator.generateChatDOM(dailyLINE.media, dailyLINE.messageObjects);
+    let chatDOM = HtmlGenerator.generateChatDOM(dailyLINE.media, dailyLINE.getMessageProcessors());
     
     return HtmlGenerator.generateDOMWithChildren(
         {
@@ -182,23 +189,6 @@ HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
         .forEach(item => dom[item] = domProperties[item]);
     
     children.forEach(child => dom.appendChild(child));
-    /*children.forEach(child => {
-        if(typeof child === "object") {
-            console.log("----- object -----");
-            console.log("child: [" + child.outerHTML + "]");
-            dom.appendChild(child);
-            
-        }
-        else if(typeof child === "string") {
-            console.log("----- string -----");
-            console.log("child: [" + child + "]");
-            dom.textContent += child;
-        }
-        else {
-            throw "Unexpected typeof child: [" + child + "]";
-        }
-        console.log("dom: [" + dom.outerHTML + "]");
-    });*/
     
     return dom;
 };
@@ -216,11 +206,7 @@ HtmlGenerator.generateDailyHTML = function(dateAndNum) {
 };
 HtmlGenerator.getBRDom = function() {
     return document.createElement(BR);
-}
-
-function isNotLastItem(index, length) {
-    return index < length-1;
-}
+};
 
 export {
     HtmlGenerator

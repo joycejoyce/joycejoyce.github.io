@@ -1,8 +1,9 @@
+import {MessageProcessor} from "./message-related-types/message-processor.js";
+
 function DailyLINE(dateAndNum) {
     //public:
     this.title = getTitle();
     this.date = getDate();
-    this.messageObjects = getMessageObjects();
     this.media = getMedia();
     
     function getTitle() {
@@ -14,14 +15,12 @@ function DailyLINE(dateAndNum) {
         return timeFormatter.getDateOfDailyLINE();
     }
     
-    function getMessageObjects() {
-        let wholeMsgStr = DAILY_MESSAGE[dateAndNum];
-        let messageParser = new MessageParser(wholeMsgStr);
-        return messageParser.messageObjects;
-    }
-    
     function getMedia() {
         return Media.getInstance(dateAndNum);
+    }
+    
+    this.getMessageProcessors = function() {
+        return new MessageProcessor(DAILY_MESSAGE[dateAndNum]).getMessageProcessors();
     }
 }
 

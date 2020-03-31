@@ -4,6 +4,7 @@ import {RegexpUtil} from "../../tool/regexp-util.js";
 
 const ALIAS_TO_MEMBER = { //alias: member
     "許天亮": "frank",
+    "frank": "frank",
     "amy": "amy",
     "美燕": "amy",
     "victor": "victor",
