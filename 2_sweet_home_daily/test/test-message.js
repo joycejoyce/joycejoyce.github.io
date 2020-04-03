@@ -107,7 +107,7 @@ function checkIsMessageProcessor(messageProcessor) {
 describe(`(MessageProcessor)getMessageProcessors()`, function() {
     it(`return the message processors`, function() {
         const messageProcessor = new MessageProcessor(msgStr);
-        let messageProcessors = messageProcessor.getMessageProcessors();
+        const messageProcessors = messageProcessor.getMessageProcessors();
         expect(messageProcessors.length).to.eql(3);
         checkIsChatMessageProcessor(messageProcessors[0]);
         checkIsDateChangeMessageProcessor(messageProcessors[1]);

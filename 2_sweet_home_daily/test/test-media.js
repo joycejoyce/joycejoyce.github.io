@@ -1,18 +1,19 @@
-import {expect, loadHTML, $} from "./common-func-for-tests.js";
-import {OneImageMediaProcessor} from "../scripts/src/type/media-related-types/one-image-media-processor.js"
-import {MultiImageMediaProcessor} from "../scripts/src/type/media-related-types/multi-image-media-processor.js"
-import {OneVideoMediaProcessor} from "../scripts/src/type/media-related-types/one-video-media-processor.js"
-import {HTML_CLASS, HTML_ID, HTML_PROPERTY, HTML_ATTRIBUTE} from "../scripts/src/constant/html-properties.js"
+import {expect, loadHTML} from "./common-func-for-tests.js";
+import {OneImageMediaProcessor} from "../scripts/src/type/media-related-types/one-image-media-processor.js";
+import {MultiImageMediaProcessor} from "../scripts/src/type/media-related-types/multi-image-media-processor.js";
+import {OneVideoMediaProcessor} from "../scripts/src/type/media-related-types/one-video-media-processor.js";
+import {MediaProcessor, MEDIA_TYPE} from "../scripts/src/type/media-related-types/media-processor.js";
+import {HTML_CLASS, HTML_ID, HTML_PROPERTY, HTML_ATTRIBUTE} from "../scripts/src/constant/html-properties.js";
 
 beforeEach(loadHTML);
 
-const imageSrc = "./images/2020/02/14/2/S__43147276.jpg";
+const imgSrc = ["./images/2020/02/14/2/S__43147276.jpg"];
 const imgSrcs = ["./images/2019/08/22/2/17201.jpg","./images/2019/08/22/2/17202.jpg","./images/2019/08/22/2/17203.jpg"];
-const videoSrc = "./images/2019/08/22/1/588172451.952125.mp4";
+const videoSrc = ["./images/2019/08/22/1/588172451.952125.mp4"];
 
 describe(`new OneImageMediaProcessor(imgSrc)`, function() {
     it(`return a OneImageMediaProcessor`, function() {
-        const processor = new OneImageMediaProcessor(imageSrc);
+        const processor = new OneImageMediaProcessor(imgSrc);
         checkIsOneImageMediaProcessor(processor);
     })
 })
@@ -24,7 +25,7 @@ function checkIsOneImageMediaProcessor(processor) {
 
 describe(`(OneImageMediaProcessor)getDom()`, function() {
     it(`return a DOM of the OneImageMedia`, function() {
-        const dom = new OneImageMediaProcessor(imageSrc).getDom();
+        const dom = new OneImageMediaProcessor(imgSrc).getDom();
         const expectedOuterHTML = `<img id="one-img-media-part" class="chat-item" src="./images/2020/02/14/2/S__43147276.jpg">`;
         expect(dom.outerHTML).to.eql(expectedOuterHTML);
     })
@@ -32,7 +33,7 @@ describe(`(OneImageMediaProcessor)getDom()`, function() {
 
 describe(`new MultiImageMediaProcessor(imgSrcs)`, function() {
     it(`return a MultiImageMediaProcessor`, function() {
-        const processor = new MultiImageMediaProcessor(imageSrc);
+        const processor = new MultiImageMediaProcessor(imgSrc);
         checkIsMultiImageMediaProcessor(processor);
     })
 })
@@ -54,7 +55,6 @@ describe(`(MultiImageMediaProcessor)addEventListeners(multiImgDom)`, function() 
     it(`add "click" event listeners for class "${HTML_CLASS.shrinkImg}" and id "${HTML_ID.expandImg}"`, function() {
         let processor = new MultiImageMediaProcessor(imgSrcs);
         const multiImgDom = processor.getDom();
-        processor.addEventListeners(multiImgDom);
         checkShrinkImgClickEventListener(multiImgDom);
         checkExpandImgClickEventListener(multiImgDom);
     })
@@ -123,5 +123,50 @@ describe(`(OneVideoMediaProcessor)getDom()`, function() {
         const dom = new OneVideoMediaProcessor(videoSrc).getDom();
         const expectedOuterHTML = `<div id="one-video-media-part" class="chat-item"><video controls=""><source src="./images/2019/08/22/1/588172451.952125.mp4" type="video/mp4"></video></div>`;
         expect(dom.outerHTML).to.eql(expectedOuterHTML);
+    })
+})
+
+describe(`new MediaProcessor(dateAndNum, mediaSrc)`, function() {
+    it(`return a MediaProcessor`, function() {
+        const dateAndNum = "20190822-1";
+        const mediaType = MEDIA_TYPE.oneVideo;
+        const mediaSrc = "588172451.952125.mp4";
+        const mediaProcessor = new MediaProcessor(dateAndNum, mediaType, mediaSrc);
+        checkIsMediaProcessor(mediaProcessor);
+    })
+})
+
+function checkIsMediaProcessor(processor) {
+    expect(processor instanceof MediaProcessor).to.be.true;
+    expect(processor instanceof OneImageMediaProcessor).to.be.false;
+    expect(processor instanceof MultiImageMediaProcessor).to.be.false;
+}
+
+describe(`(MediaProcessor)getMediaProcessor()`, function() {
+    it(`return a media processor`, function() {
+        const mediaSrcs = {
+            "20190822-1": ["588172451.952125.mp4"],
+            "20190822-2": ["17201.jpg","17202.jpg","17203.jpg","17204.jpg","17205.jpg"],
+            "20200214-2": ["S__43147276.jpg"]
+        };
+        const mediaTypes = {
+            "20190822-1": MEDIA_TYPE.oneVideo,
+            "20190822-2": MEDIA_TYPE.multiImage,
+            "20200214-2": MEDIA_TYPE.oneImage
+        };
+        
+        const processors =
+        Object.keys(mediaSrcs).reduce((mediaProcessors, dateAndNum) => {
+            const type = mediaTypes[dateAndNum];
+            const srcs = mediaSrcs[dateAndNum];
+            const processor = new MediaProcessor(dateAndNum, type, srcs);
+            const mediaProcessor = processor.getMediaProcessor();
+            mediaProcessors.push(mediaProcessor);
+            return mediaProcessors;
+        }, []);
+        
+        checkIsOneVideoMediaProcessor(processors[0]);
+        checkIsMultiImageMediaProcessor(processors[1]);
+        checkIsOneImageMediaProcessor(processors[2]);
     })
 })

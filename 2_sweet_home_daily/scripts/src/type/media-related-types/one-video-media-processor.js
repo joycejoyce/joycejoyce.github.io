@@ -20,8 +20,8 @@ function OneVideoMediaProcessor(videoSrc) {
         const sourceTagDom = getSourceTagDom();
         const dom = HtmlGenerator.generateDOMWithChildren(
             {
-                [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_VIDEO,
-                [HTML_PROPERTY_CONTROLS]: true
+                [HTML_PROPERTY.tagName]: HTML_TAG_NAME.video,
+                [HTML_PROPERTY.controls]: true
             },
             [sourceTagDom]
         );
@@ -33,7 +33,7 @@ function OneVideoMediaProcessor(videoSrc) {
         const dom = HtmlGenerator.generateDOMWithChildren(
             {
                 [HTML_PROPERTY.tagName]: HTML_TAG_NAME.source,
-                [HTML_PROPERTY.src]: videoSrc,
+                [HTML_PROPERTY.src]: videoSrc[0],
                 [HTML_PROPERTY.type]: videoType
             },
             []
@@ -43,7 +43,7 @@ function OneVideoMediaProcessor(videoSrc) {
     
     function getVideoType() {
         const VIDEO_FORMAT_PREFIX = "video/";
-        return VIDEO_FORMAT_PREFIX + MediaProcessor.getFileExtention(videoSrc);
+        return VIDEO_FORMAT_PREFIX + MediaProcessor.getFileExtention(videoSrc[0]);
     }
 }
 

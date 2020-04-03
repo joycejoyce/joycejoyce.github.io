@@ -1,14 +1,6 @@
-const import_files = require("../scripts/src/tool/import-files.js");
-import_files.doImport(import_files.IMPORT_TYPE_COMMON_JS);
-
 const chai = require("chai");
 const expect = chai.expect;
 const assert = chai.assert;
-
-const { JSDOM } = require("jsdom");
-const jsdom = new JSDOM("<!doctype html><html><body></body></html>");
-const { window } = jsdom;
-const $ = global.jQuery = require("jquery")(window);
 
 function checkDOMProperties(dom, propertiesToCheck) {
     let keys = Object.keys(propertiesToCheck);
@@ -19,21 +11,17 @@ function checkDOMProperties(dom, propertiesToCheck) {
 }
 
 function loadHTML() {
-    return JSDOM.fromFile("./daily.html")
-        .then((dom) => {
-        global.window = dom.window;
-        global.document = window.document;
-    });
+    const { JSDOM } = require("jsdom");
+    const jsdom = new JSDOM("<!doctype html><html><body></body></html>");
+    const { window } = jsdom;
+    global.document = window.document;
+    global.$ = require('jquery')(window);
 };
 
 module.exports = {
     chai,
     expect,
     assert,
-    JSDOM,
-    jsdom,
-    window,
-    $,
     checkDOMProperties,
     loadHTML
 };

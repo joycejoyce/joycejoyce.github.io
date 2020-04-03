@@ -1,9 +1,8 @@
 import {HTML_CLASS, HTML_ID, HTML_TAG_NAME, HTML_PROPERTY, HTML_ATTRIBUTE} from "../../constant/html-properties.js";
 import {HtmlGenerator} from "../html-generator.js";
-import {$} from "../../../../test/common-func-for-tests.js";
+//import {$} from "../../../../test/common-func-for-tests.js";
 
-function MultiImageMediaProcessor(imgSrcs) {
-    
+function MultiImageMediaProcessor(imgSrcs) {    
     this.getDom = function() {
         const shrinkImgDoms = imgSrcs.map(imgSrc => getShrinkImgDom(imgSrc));
         processFirstShrinkImgDom(shrinkImgDoms[0]);

@@ -8,7 +8,7 @@ function OneImageMediaProcessor(imgSrc) {
                 [HTML_PROPERTY.tagName]: HTML_TAG_NAME.img,
                 [HTML_PROPERTY.id]: HTML_ID.oneImgMediaPart,
                 [HTML_PROPERTY.className]: HTML_CLASS.chatItem,
-                [HTML_PROPERTY.src]: imgSrc
+                [HTML_PROPERTY.src]: imgSrc[0]
             },
         []);
         return dom;

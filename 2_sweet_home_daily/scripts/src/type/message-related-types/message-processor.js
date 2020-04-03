@@ -1,4 +1,4 @@
-import {RegexpUtil} from "../../tool/regexp-util.js";
+import {RegexpUtil} from "../util/regexp-util.js";
 import {ChatMessageProcessor} from "./chat-message-processor.js";
 import {DateChangeMessageProcessor} from "./date-change-message-processor.js";
 

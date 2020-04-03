@@ -1,6 +1,6 @@
 import {HTML_CLASS, HTML_TAG_NAME, HTML_PROPERTY} from "../../constant/html-properties.js";
 import {HtmlGenerator} from "../html-generator.js";
-import {RegexpUtil} from "../../tool/regexp-util.js";
+import {RegexpUtil} from "../util/regexp-util.js";
 
 const ALIAS_TO_MEMBER = { //alias: member
     "許天亮": "frank",
@@ -71,7 +71,7 @@ function ChatMessageProcessor(prefix, content) {
         return [memberIconDom,
                spaceDom,
                timestampDom,
-               HtmlGenerator.getBRDom(),
+               document.createElement(HTML_TAG_NAME.br),
                chatContentDom];
     }
     

@@ -33,15 +33,6 @@ function importTypes(ary) {
     Object.entries(require('../type/time-formatter.js')).forEach(([name, imported]) => ary[name] = imported);
     Object.entries(require('../type/date-and-num-parser.js')).forEach(([name, imported]) => ary[name] = imported);
     Object.entries(require('../type/daily-line.js')).forEach(([name, imported]) => ary[name] = imported);
-    
-    importMediaRelatedTypes(ary);
-}
-
-function importMediaRelatedTypes(ary) {
-    Object.entries(require('../type/media-related-types/media.js')).forEach(([name, imported]) => ary[name] = imported);
-    Object.entries(require('../type/media-related-types/one-image-media.js')).forEach(([name, imported]) => ary[name] = imported);
-    Object.entries(require('../type/media-related-types/multi-image-media.js')).forEach(([name, imported]) => ary[name] = imported);
-    Object.entries(require('../type/media-related-types/one-video-media.js')).forEach(([name, imported]) => ary[name] = imported);
 }
 
 module.exports = {

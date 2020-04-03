@@ -6,7 +6,8 @@ const HTML_PROPERTY = {
     textContent: "textContent",
     id: "id",
     data: "data",
-    type: "type"
+    type: "type",
+    controls: "controls"
 }
 
 const HTML_CLASS = {
@@ -34,7 +35,8 @@ const HTML_TAG_NAME = {
     span: "span",
     br: "br",
     img: "img",
-    source: "source"
+    source: "source",
+    video: "video"
 };
 
 const HTML_ATTRIBUTE = {
