@@ -20,8 +20,8 @@ function DateChangeMessageProcessor(prefix) {
     };
     
     this.getDom = function() {
-        let dateChangeTextDom = getDateChangeTextDom();
-        let dom = HtmlGenerator.generateDOMWithChildren(
+        const dateChangeTextDom = getDateChangeTextDom();
+        const dom = HtmlGenerator.generateDOMWithChildren(
             {
                 [HTML_PROPERTY.tagName]: HTML_TAG_NAME.div,
                 [HTML_PROPERTY.className]: HTML_CLASS.dateChange

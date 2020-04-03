@@ -1,7 +1,7 @@
-Object.entries(require('./common-func-for-tests.js')).forEach(([name, imported]) => global[name] = imported);
-Object.entries(require('../scripts/src/type/message-related-types/chat-message-processor.js')).forEach(([name, imported]) => global[name] = imported);
-Object.entries(require('../scripts/src/type/message-related-types/date-change-message-processor.js')).forEach(([name, imported]) => global[name] = imported);
-Object.entries(require('../scripts/src/type/message-related-types/message-processor.js')).forEach(([name, imported]) => global[name] = imported);
+import {expect, loadHTML} from "./common-func-for-tests.js";
+import {ChatMessageProcessor} from "../scripts/src/type/message-related-types/chat-message-processor.js";
+import {DateChangeMessageProcessor} from "../scripts/src/type/message-related-types/date-change-message-processor.js";
+import {MessageProcessor} from "../scripts/src/type/message-related-types/message-processor.js";
 
 const chatPrefix = "22:55 victor";
 const chatContent = `小螞蟻玩水
@@ -29,26 +29,12 @@ function checkIsChatMessageProcessor(messageProcessor) {
     expect(messageProcessor instanceof DateChangeMessageProcessor).to.be.false;
 }
 
-describe(`(ChatMessageProcessor)getMessage()`, function() {
-    it(`return a ChatMessage object`, function() {
-        const messageProcessor = new ChatMessageProcessor(chatPrefix, chatContent); 
-        let message = messageProcessor.getMessage();
-        let expectedMessage = {
-            memberIconSrc: "./images/member_icon/victor.png",
-            timestamp: "22:55",
-            chatContent: chatContent
-        };
-        expect(message).to.eql(expectedMessage);
-    })
-})
-
 describe(`(ChatMessageProcessor)getDom()`, function() {
     it(`return a DOM of the ChatMessage`, function() {
         const messageProcessor = new ChatMessageProcessor(chatPrefix, chatContent); 
         const dom = messageProcessor.getDom();
         //console.log("outerHTML = [" + dom.outerHTML + "]");
-        const message = messageProcessor.getMessage();
-        const expectedOuterHTML = `<div class="message"><img class="member-icon" src="${message.memberIconSrc}">  <span class="timestamp">${message.timestamp}</span><br>${message.chatContent}</div>`;
+        const expectedOuterHTML = `<div class="message"><img class="member-icon" src="./images/member_icon/victor.png">  <span class="timestamp">22:55</span><br>${chatContent}</div>`;
         expect(dom.outerHTML).to.eql(expectedOuterHTML);
     })
 })

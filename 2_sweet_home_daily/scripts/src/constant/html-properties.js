@@ -4,7 +4,8 @@ const HTML_PROPERTY = {
     innerHTML: "innerHTML",
     src: "src",
     textContent: "textContent",
-    id: "id"
+    id: "id",
+    data: "data"
 }
 
 const HTML_CLASS = {
@@ -12,23 +13,34 @@ const HTML_CLASS = {
     timestamp: "timestamp",
     memberIcon: "member-icon",
     dateChange: "date-change",
-    chatItem: "chat-item"
+    chatItem: "chat-item",
+    shrinkImg: "shrink-img"
 };
 
 const HTML_ID = {
-    textPart: "text-part"
+    textPart: "text-part",
+    oneImgMediaPart: "one-img-media-part",
+    shrinkImgs: "shrink-imgs",
+    expandImg: "expand-img",
+    multiImgMediaPart: "multi-img-media-part",
+    currentImg: "current-img"
 }
 
 const HTML_TAG_NAME = {
     div: "div",
     img: "img",
     span: "span",
-    br: "br"
+    br: "br",
+    img: "img"
 };
 
+const HTML_ATTRIBUTE = {
+    dataFirstImgsrc: "data-first-imgsrc"
+};
 export {
     HTML_PROPERTY,
     HTML_CLASS,
     HTML_ID,
-    HTML_TAG_NAME
+    HTML_TAG_NAME,
+    HTML_ATTRIBUTE
 };

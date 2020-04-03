@@ -43,16 +43,16 @@ function ChatMessageProcessor(prefix, content) {
         return prefix.match(TIMESTAMP_REGEXP)[0];
     }
     
-    this.getMessage = function() {
+    function getMessage() {
         return {
             memberIconSrc: MEMBER_ICON_SRC,
             timestamp: TIMESTAMP,
             chatContent: CHAT_CONTENT
         };
-    };
+    }
     
     this.getDom = function() {
-        let dom = HtmlGenerator.generateDOMWithChildren(
+        const dom = HtmlGenerator.generateDOMWithChildren(
             {
                 [HTML_PROPERTY.tagName]: HTML_TAG_NAME.div,
                 [HTML_PROPERTY.className]: HTML_CLASS.message
@@ -76,7 +76,7 @@ function ChatMessageProcessor(prefix, content) {
     }
     
     function getMemberIconDom() {
-        let dom = HtmlGenerator.generateDOMWithChildren(
+        const dom = HtmlGenerator.generateDOMWithChildren(
             {
                 [HTML_PROPERTY.tagName]: HTML_TAG_NAME.img,
                 [HTML_PROPERTY.className]: HTML_CLASS.memberIcon,
@@ -92,7 +92,7 @@ function ChatMessageProcessor(prefix, content) {
     }
     
     function getTimestampDom() {
-        let dom = HtmlGenerator.generateDOMWithChildren(
+        const dom = HtmlGenerator.generateDOMWithChildren(
             {
                 [HTML_PROPERTY.tagName]: HTML_TAG_NAME.span,
                 [HTML_PROPERTY.className]: HTML_CLASS.timestamp,

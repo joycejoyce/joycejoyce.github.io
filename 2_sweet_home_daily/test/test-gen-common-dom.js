@@ -2,6 +2,8 @@ Object.entries(require('./common-func-for-tests.js')).forEach(([name, imported])
 
 Object.entries(require('./test-gen-one-img-dom.js')).forEach(([name, imported]) => global[name] = imported);
 
+import {HTML_ID} from "../scripts/src/constant/html-properties.js";
+
 const dateAndNum = "20200214-2";
 const dailyLINE = new DailyLINE(dateAndNum);
 const memberChatMsgObj = dailyLINE.messageObjects[0];
@@ -46,13 +48,6 @@ describe(`generateChatContentDOM(${memberChatMsgObj.chatContent})`, function() {
     it(`generate a text DOM with textContent=${memberChatMsgObj.chatContent}`, function() {
         let dom = MemberChatDOMGenerator.generateChatContentDOM(memberChatMsgObj.chatContent);
         expect(dom.textContent).to.eql(memberChatMsgObj.chatContent);
-    })
-});
-
-describe(`generateMemberChatDOM(memberChatMsgObj)`, function() {
-    it(`generate 'div' DOM with className=${HTML_CLASS_MESSAGE} & DOMs of timestamp/memberIcon/br/chatContent`, function() {
-        let dom = MemberChatDOMGenerator.generateMemberChatDOM(memberChatMsgObj);
-        checkMemberChatDOM(dom, memberChatMsgObj);
     })
 });
 
@@ -188,7 +183,7 @@ function checkDateChangeDOM(dom, msgObj) {
 
 function checkTextPartOfChatDOM(dom) {
     expect(dom.tagName).to.eql(HTML_TAG_NAME_DIV);
-    expect(dom.id).to.eql(HTML_ID_TEXT_PART);
+    expect(dom.id).to.eql(HTML_ID.textPart);
     expect(dom.className).to.eql(HTML_CLASS_CHAT_ITEM);
 }
 
