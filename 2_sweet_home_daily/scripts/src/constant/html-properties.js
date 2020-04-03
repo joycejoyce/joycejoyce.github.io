@@ -5,7 +5,8 @@ const HTML_PROPERTY = {
     src: "src",
     textContent: "textContent",
     id: "id",
-    data: "data"
+    data: "data",
+    type: "type"
 }
 
 const HTML_CLASS = {
@@ -23,7 +24,8 @@ const HTML_ID = {
     shrinkImgs: "shrink-imgs",
     expandImg: "expand-img",
     multiImgMediaPart: "multi-img-media-part",
-    currentImg: "current-img"
+    currentImg: "current-img",
+    oneVideoMediaPart: "one-video-media-part"
 }
 
 const HTML_TAG_NAME = {
@@ -31,7 +33,8 @@ const HTML_TAG_NAME = {
     img: "img",
     span: "span",
     br: "br",
-    img: "img"
+    img: "img",
+    source: "source"
 };
 
 const HTML_ATTRIBUTE = {

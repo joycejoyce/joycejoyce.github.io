@@ -12,6 +12,8 @@ function MultiImageMediaProcessor(imgSrcs) {
         const expandImgDom = getExpandImgDom(imgSrcs[0]);
         const multiImgMediaDom = getMultiImgMediaDom(shrinkImgsDom, expandImgDom);
         
+        this.addEventListeners(multiImgMediaDom);
+        
         return multiImgMediaDom;
     }
     

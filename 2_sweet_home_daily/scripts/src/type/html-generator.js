@@ -182,7 +182,7 @@ HtmlGenerator.generateOneVideoMediaDOM = function(videoSrc) {
     );
 };
 HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
-    let dom = document.createElement(domProperties[TAG_NAME]);
+    let dom = document.createElement(domProperties[HTML_PROPERTY.tagName]);
     
     let keys = Object.keys(domProperties);
     keys.filter(item => item != TAG_NAME)

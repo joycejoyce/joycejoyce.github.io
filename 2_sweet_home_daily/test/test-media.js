@@ -1,12 +1,14 @@
 import {expect, loadHTML, $} from "./common-func-for-tests.js";
 import {OneImageMediaProcessor} from "../scripts/src/type/media-related-types/one-image-media-processor.js"
 import {MultiImageMediaProcessor} from "../scripts/src/type/media-related-types/multi-image-media-processor.js"
+import {OneVideoMediaProcessor} from "../scripts/src/type/media-related-types/one-video-media-processor.js"
 import {HTML_CLASS, HTML_ID, HTML_PROPERTY, HTML_ATTRIBUTE} from "../scripts/src/constant/html-properties.js"
 
 beforeEach(loadHTML);
 
 const imageSrc = "./images/2020/02/14/2/S__43147276.jpg";
 const imgSrcs = ["./images/2019/08/22/2/17201.jpg","./images/2019/08/22/2/17202.jpg","./images/2019/08/22/2/17203.jpg"];
+const videoSrc = "./images/2019/08/22/1/588172451.952125.mp4";
 
 describe(`new OneImageMediaProcessor(imgSrc)`, function() {
     it(`return a OneImageMediaProcessor`, function() {
@@ -103,3 +105,23 @@ function getFirstShrinkImgDom(multiImgDom) {
     const firstImgSrc = $(multiImgDom).find("#"+HTML_ID.expandImg).attr(HTML_ATTRIBUTE.dataFirstImgsrc);
     return $(multiImgDom).find("."+HTML_CLASS.shrinkImg).filter(`img[src="${firstImgSrc}"]`);
 }
+
+describe(`new OneVideoMediaProcessor(videoSrc)`, function() {
+    it(`return a OneVideoMediaProcessor`, function() {
+        const processor = new OneVideoMediaProcessor(videoSrc);
+        checkIsOneVideoMediaProcessor(processor);
+    })
+})
+
+function checkIsOneVideoMediaProcessor(processor) {
+    expect(processor instanceof OneVideoMediaProcessor).to.be.true;
+    expect(processor instanceof OneImageMediaProcessor).to.be.false;
+}
+
+describe(`(OneVideoMediaProcessor)getDom()`, function() {
+    it(`return a DOM of the OneVideoMedia`, function() {
+        const dom = new OneVideoMediaProcessor(videoSrc).getDom();
+        const expectedOuterHTML = `<div id="one-video-media-part" class="chat-item"><video controls=""><source src="./images/2019/08/22/1/588172451.952125.mp4" type="video/mp4"></video></div>`;
+        expect(dom.outerHTML).to.eql(expectedOuterHTML);
+    })
+})

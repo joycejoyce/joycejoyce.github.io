@@ -2,6 +2,7 @@ function OneVideoMedia(dateAndNum) {
     this.type = MEDIA_TYPE_ONE_VIDEO;
     this.src = Media.getSrcFilePaths(dateAndNum)[0];
     this.generateMediaDOM = function() {
+        console.log("video html = " + HtmlGenerator.generateOneVideoMediaDOM(this.src).outerHTML);
         return HtmlGenerator.generateOneVideoMediaDOM(this.src);
     };
     this.addEventListeners = function() {};
