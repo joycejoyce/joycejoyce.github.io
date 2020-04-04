@@ -16,7 +16,8 @@ const HTML_CLASS = {
     memberIcon: "member-icon",
     dateChange: "date-change",
     chatItem: "chat-item",
-    shrinkImg: "shrink-img"
+    shrinkImg: "shrink-img",
+    headerItem: "header-item"
 };
 
 const HTML_ID = {
@@ -26,7 +27,12 @@ const HTML_ID = {
     expandImg: "expand-img",
     multiImgMediaPart: "multi-img-media-part",
     currentImg: "current-img",
-    oneVideoMediaPart: "one-video-media-part"
+    oneVideoMediaPart: "one-video-media-part",
+    title: "title",
+    date: "date",
+    chatContainer: "chat-container",
+    headerContainer: "header-container",
+    main: "main"
 }
 
 const HTML_TAG_NAME = {

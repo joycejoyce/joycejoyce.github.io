@@ -104,7 +104,7 @@ nav {
     grid-row-gap: 10px;
 }
 
-.current-img, #current-img {
+#current-img {
     border: solid;
     border-width: medium;
     border-color: #6495ed;

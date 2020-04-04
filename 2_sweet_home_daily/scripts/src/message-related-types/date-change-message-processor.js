@@ -1,4 +1,4 @@
-import {HTML_CLASS, HTML_TAG_NAME, HTML_PROPERTY} from "../../constant/html-properties.js";
+import {HTML_CLASS, HTML_TAG_NAME, HTML_PROPERTY} from "../html-properties.js";
 import {HtmlGenerator} from "../html-generator.js";
 
 const DATE_CHANGE_REGEXP = new RegExp("\\d{4}\\.\\d{2}\\.\\d{2}");

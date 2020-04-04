@@ -1,4 +1,4 @@
-import {HTML_CLASS, HTML_ID, HTML_TAG_NAME, HTML_PROPERTY, HTML_ATTRIBUTE} from "../../constant/html-properties.js";
+import {HTML_CLASS, HTML_ID, HTML_TAG_NAME, HTML_PROPERTY, HTML_ATTRIBUTE} from "../html-properties.js";
 import {HtmlGenerator} from "../html-generator.js";
 //import {$} from "../../../../test/common-func-for-tests.js";
 

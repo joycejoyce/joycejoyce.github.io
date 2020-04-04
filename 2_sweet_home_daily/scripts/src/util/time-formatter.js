@@ -25,6 +25,12 @@ TimeFormatter.prototype = {
     }
 };
 TimeFormatter.getMonthName = function(month) {
+    const MONTH_NAME = 
+          ["January", "February", "March",
+           "April", "May", "June",
+           "July", "August", "September",
+           "October", "November", "December"
+          ];
     let index = parseInt(month, 10) - 1;
     return MONTH_NAME[index];
 };

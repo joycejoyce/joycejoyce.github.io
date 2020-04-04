@@ -1,7 +1,7 @@
 import {expect, loadHTML} from "./common-func-for-tests.js";
-import {ChatMessageProcessor} from "../scripts/src/type/message-related-types/chat-message-processor.js";
-import {DateChangeMessageProcessor} from "../scripts/src/type/message-related-types/date-change-message-processor.js";
-import {MessageProcessor} from "../scripts/src/type/message-related-types/message-processor.js";
+import {ChatMessageProcessor} from "../scripts/src/message-related-types/chat-message-processor.js";
+import {DateChangeMessageProcessor} from "../scripts/src/message-related-types/date-change-message-processor.js";
+import {MessageProcessor} from "../scripts/src/message-related-types/message-processor.js";
 
 const chatPrefix = "22:55 victor";
 const chatContent = `小螞蟻玩水
@@ -106,7 +106,8 @@ function checkIsMessageProcessor(messageProcessor) {
 
 describe(`(MessageProcessor)getMessageProcessors()`, function() {
     it(`return the message processors`, function() {
-        const messageProcessor = new MessageProcessor(msgStr);
+        const dateAndNum = "20200214-2";
+        const messageProcessor = new MessageProcessor(dateAndNum);
         const messageProcessors = messageProcessor.getMessageProcessors();
         expect(messageProcessors.length).to.eql(3);
         checkIsChatMessageProcessor(messageProcessors[0]);

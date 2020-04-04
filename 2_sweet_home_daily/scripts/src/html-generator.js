@@ -1,23 +1,16 @@
-import {HTML_TAG_NAME, HTML_PROPERTY, HTML_CLASS, HTML_ID} from "../constant/html-properties.js";
-import {ChatMessageProcessor} from "./message-related-types/chat-message-processor.js";
-import {DateChangeMessageProcessor} from "./message-related-types/date-change-message-processor.js";
-//import {MediaProcessor} from "./media-related-types/media-processor.js";
-
-const BR = HTML_TAG_NAME.br;
-const TAG_NAME = HTML_PROPERTY.tagName;
-const CLASS_NAME = HTML_PROPERTY.className;
-const TEXT_CONTENT = HTML_PROPERTY.textContent;
+import {HTML_TAG_NAME, HTML_PROPERTY, HTML_CLASS, HTML_ID} from "./html-properties.js";
+import {DailyLINE} from "./daily-line.js";
 
 function HtmlGenerator() {}
 HtmlGenerator.generateTitleDOM = function(title) {
-    let dom = document.createElement(HTML_TAG_NAME_DIV);
-    dom.id = HTML_ID_TITLE;
+    let dom = document.createElement(HTML_TAG_NAME.div);
+    dom.id = HTML_ID.title;
     dom.innerHTML = title;
     return dom;
 };
 HtmlGenerator.generateDateDOM = function(date) {
-    let dom = document.createElement(HTML_TAG_NAME_DIV);
-    dom.id = HTML_ID_DATE;
+    let dom = document.createElement(HTML_TAG_NAME.div);
+    dom.id = HTML_ID.date;
     dom.innerHTML = date;
     return dom;
 };
@@ -27,7 +20,7 @@ HtmlGenerator.generateMessageDOM = function(msgObj) {
 HtmlGenerator.appendBRElementsOfNum = function(num, parentDOM) {
     let dom = parentDOM;
     for(let i=0; i<num; i++) {
-        dom.appendChild(document.createElement(HTML_TAG_NAME_BR));
+        dom.appendChild(document.createElement(HTML_TAG_NAME.br));
     }
     return dom;
 };
@@ -60,8 +53,8 @@ HtmlGenerator.generateChatDOM = function(mediaProcessor, msgProcessors) {
     
     return HtmlGenerator.generateDOMWithChildren(
         {
-            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
-            [HTML_PROPERTY_ID]: HTML_ID_CHAT_CONTAINER
+            [HTML_PROPERTY.tagName]: HTML_TAG_NAME.div,
+            [HTML_PROPERTY.id]: HTML_ID.chatContainer
         },
         [mediaPartDOM, textPartDOM]
     );
@@ -72,8 +65,8 @@ HtmlGenerator.generateTitleAndDatePartOfHeaderDOM = function(title, date) {
     
     return HtmlGenerator.generateDOMWithChildren(
         {
-            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
-            [HTML_PROPERTY_CLASS_NAME]: HTML_CLASS_HEADER_ITEM
+            [HTML_PROPERTY.tagName]: HTML_TAG_NAME.div,
+            [HTML_PROPERTY.className]: HTML_CLASS.headerItem
         },
         [titleDOM, dateDOM]
     );
@@ -83,8 +76,8 @@ HtmlGenerator.generateHeaderDOM = function(title, date) {
     
     return HtmlGenerator.generateDOMWithChildren(
         {
-            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
-            [HTML_PROPERTY_ID]: HTML_ID_HEADER_CONTAINER
+            [HTML_PROPERTY.tagName]: HTML_TAG_NAME.div,
+            [HTML_PROPERTY.id]: HTML_ID.headerContainer
         },
         [titleAndDateDOM]
     );
@@ -95,8 +88,8 @@ HtmlGenerator.generateMainDOM = function(dailyLINE) {
     
     return HtmlGenerator.generateDOMWithChildren(
         {
-            [HTML_PROPERTY_TAG_NAME]: HTML_TAG_NAME_DIV,
-            [HTML_PROPERTY_ID]: HTML_ID_MAIN
+            [HTML_PROPERTY.tagName]: HTML_TAG_NAME.div,
+            [HTML_PROPERTY.id]: HTML_ID.main
         },
         [headerDOM, chatDOM]
     );
@@ -105,7 +98,7 @@ HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
     let dom = document.createElement(domProperties[HTML_PROPERTY.tagName]);
     
     let keys = Object.keys(domProperties);
-    keys.filter(item => item != TAG_NAME)
+    keys.filter(item => item != HTML_PROPERTY.tagName)
         .forEach(item => dom[item] = domProperties[item]);
     
     children.forEach(child => dom.appendChild(child));
@@ -113,8 +106,6 @@ HtmlGenerator.generateDOMWithChildren = function(domProperties, children) {
     return dom;
 };
 HtmlGenerator.generateDailyHTML = function(dateAndNum) {
-    const import_files = require('../tool/import-files.js');
-    import_files.doImport(import_files.IMPORT_TYPE_ES6);
     let dailyLINE = new DailyLINE(dateAndNum);
     let dom = HtmlGenerator.generateMainDOM(dailyLINE);
     document.body.appendChild(dom);

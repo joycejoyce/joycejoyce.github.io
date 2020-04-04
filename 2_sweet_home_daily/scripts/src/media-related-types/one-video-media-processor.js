@@ -1,4 +1,4 @@
-import {HTML_CLASS, HTML_ID, HTML_TAG_NAME, HTML_PROPERTY} from "../../constant/html-properties.js";
+import {HTML_CLASS, HTML_ID, HTML_TAG_NAME, HTML_PROPERTY} from "../html-properties.js";
 import {HtmlGenerator} from "../html-generator.js";
 import {MediaProcessor} from "./media-processor.js";
 

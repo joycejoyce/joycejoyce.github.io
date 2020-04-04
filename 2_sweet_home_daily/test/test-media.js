@@ -1,9 +1,9 @@
 import {expect, loadHTML} from "./common-func-for-tests.js";
-import {OneImageMediaProcessor} from "../scripts/src/type/media-related-types/one-image-media-processor.js";
-import {MultiImageMediaProcessor} from "../scripts/src/type/media-related-types/multi-image-media-processor.js";
-import {OneVideoMediaProcessor} from "../scripts/src/type/media-related-types/one-video-media-processor.js";
-import {MediaProcessor, MEDIA_TYPE} from "../scripts/src/type/media-related-types/media-processor.js";
-import {HTML_CLASS, HTML_ID, HTML_PROPERTY, HTML_ATTRIBUTE} from "../scripts/src/constant/html-properties.js";
+import {OneImageMediaProcessor} from "../scripts/src/media-related-types/one-image-media-processor.js";
+import {MultiImageMediaProcessor} from "../scripts/src/media-related-types/multi-image-media-processor.js";
+import {OneVideoMediaProcessor} from "../scripts/src/media-related-types/one-video-media-processor.js";
+import {MediaProcessor, MEDIA_TYPE} from "../scripts/src/media-related-types/media-processor.js";
+import {HTML_CLASS, HTML_ID, HTML_PROPERTY, HTML_ATTRIBUTE} from "../scripts/src/html-properties.js";
 
 beforeEach(loadHTML);
 
@@ -126,13 +126,11 @@ describe(`(OneVideoMediaProcessor)getDom()`, function() {
     })
 })
 
-describe(`new MediaProcessor(dateAndNum, mediaSrc)`, function() {
+describe(`new MediaProcessor(dateAndNum)`, function() {
     it(`return a MediaProcessor`, function() {
         const dateAndNum = "20190822-1";
-        const mediaType = MEDIA_TYPE.oneVideo;
-        const mediaSrc = "588172451.952125.mp4";
-        const mediaProcessor = new MediaProcessor(dateAndNum, mediaType, mediaSrc);
-        checkIsMediaProcessor(mediaProcessor);
+        const processor = new MediaProcessor(dateAndNum);
+        checkIsMediaProcessor(processor);
     })
 })
 
@@ -144,27 +142,17 @@ function checkIsMediaProcessor(processor) {
 
 describe(`(MediaProcessor)getMediaProcessor()`, function() {
     it(`return a media processor`, function() {
-        const mediaSrcs = {
-            "20190822-1": ["588172451.952125.mp4"],
-            "20190822-2": ["17201.jpg","17202.jpg","17203.jpg","17204.jpg","17205.jpg"],
-            "20200214-2": ["S__43147276.jpg"]
-        };
-        const mediaTypes = {
-            "20190822-1": MEDIA_TYPE.oneVideo,
-            "20190822-2": MEDIA_TYPE.multiImage,
-            "20200214-2": MEDIA_TYPE.oneImage
-        };
+        const dateAndNums = ["20190822-1", "20190822-2", "20200214-2"];
         
         const processors =
-        Object.keys(mediaSrcs).reduce((mediaProcessors, dateAndNum) => {
-            const type = mediaTypes[dateAndNum];
-            const srcs = mediaSrcs[dateAndNum];
-            const processor = new MediaProcessor(dateAndNum, type, srcs);
+        dateAndNums.reduce((mediaProcessors, dateAndNum) => {
+            const processor = new MediaProcessor(dateAndNum);
             const mediaProcessor = processor.getMediaProcessor();
             mediaProcessors.push(mediaProcessor);
             return mediaProcessors;
         }, []);
         
+        expect(processors.length).to.eql(3);
         checkIsOneVideoMediaProcessor(processors[0]);
         checkIsMultiImageMediaProcessor(processors[1]);
         checkIsOneImageMediaProcessor(processors[2]);
